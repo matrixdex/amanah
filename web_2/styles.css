@@ -302,3 +302,6 @@ body.is-scrolling .sp-grid { pointer-events: none; }
   .sp-cards { grid-template-columns: 1fr; }
   .sp-sec { padding: 64px 0; }
 }
+
+/* label text removed; empty element keeps its original spacing */
+.kicker:empty::before{content:"\00a0"}
