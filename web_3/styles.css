@@ -269,7 +269,6 @@ body.is-scrolling .grid, body.is-scrolling .hero { pointer-events: none; }
 .ga-logo { font-family: var(--font-head); font-style: italic; font-size: 2.1rem; line-height: 1; }
 
 .ga-hero { text-align: center; padding: 48px 0 100px; }
-.ga-eyebrow { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin: 0 0 18px; }
 .ga-hero h1 { font-size: clamp(3rem, 7vw, 6.4rem); line-height: 1; letter-spacing: -0.015em; margin: 0 0 48px; }
 .ga-hero h1 em, .ga-h2 em { color: var(--accent); }
 .ga-circle { width: min(520px, 86vw); aspect-ratio: 1; margin: 0 auto 48px; border-radius: 50%; background: radial-gradient(55% 40% at 50% 80%, rgb(var(--hl-rgb) / 0.5), transparent 70%), var(--tile); display: flex; align-items: flex-end; justify-content: center; gap: 4%; padding: 0 18% 20%; box-shadow: 0 0 0 14px var(--bg), 0 0 0 15px var(--line); }
