@@ -340,3 +340,10 @@ body.is-scrolling .ed-list { pointer-events: none; }
 .ed-hero__art img { flex: 1 1 0; min-width: 0; width: auto; height: 100%; object-fit: cover; display: block; }
 .pdp__media { align-self: start; }
 .modal__close { background: rgb(255 255 255 / 0.88); color: #222; border-radius: 999px; padding: 6px 14px; }
+
+/* ==================== Amanah logo ==================== */
+.ed-logo, .sp-logo, .ga-logo, .sw-logo, .be-logo { display: inline-flex; align-items: center; gap: 0.4em; }
+.brand-logo { display: block; flex: none; width: 1.4em; height: 1.4em; }
+.foot-brand { display: inline-flex; align-items: center; gap: 14px; }
+.foot-logo { display: block; flex: none; width: 52px; height: 52px; }
+.ed-foot, .sp-foot, .ga-foot, .sw-foot, .be-foot { align-items: center; }
