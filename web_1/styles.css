@@ -347,3 +347,4 @@ body.is-scrolling .ed-list { pointer-events: none; }
 .foot-brand { display: inline-flex; align-items: center; gap: 14px; }
 .foot-logo { display: block; flex: none; width: 52px; height: 52px; }
 .ed-foot, .sp-foot, .ga-foot, .sw-foot, .be-foot { align-items: center; }
+.ed-foot, .sp-foot, .ga-foot, .sw-foot, .be-foot { justify-content: center; text-align: center; }
