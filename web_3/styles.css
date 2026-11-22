@@ -383,3 +383,30 @@ body.is-scrolling .ga-track { pointer-events: none; }
 /* label text removed; empty element keeps its original spacing */
 .ga-eyebrow:empty::before{content:"\00a0"}
 @media (max-width: 494px){ .ga-hero .ga-eyebrow:empty::before{content:"\00a0\A\00a0"; white-space:pre} }
+
+/* ==================== Product photography ==================== */
+[hidden] { display: none !important; }
+.card__media .card__view { width: 100%; height: 100%; padding: 0; }
+.card__media img { position: relative; display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.card:hover .card__media img { transform: scale(1.04); }
+.line__img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pdp__media { display: block; overflow: hidden; min-height: 0; }
+.pdp__media img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.row__img { overflow: hidden; }
+.row__img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cell__media { padding: 0; }
+.cell__media img { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.cell:hover .cell__media img { transform: none; }
+.ga-circle img { flex: 0 0 auto; width: 27%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; border-radius: 999px 999px 10px 10px; display: block; box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.45); }
+.ga-circle img:nth-child(2) { width: 33%; margin-bottom: 10%; }
+.ga-track { justify-content: safe center; }
+@media (min-width: 1100px) { .ga-arrows { display: none; } }
+/* photos inside the shamsa medallion and the carved card frames */
+.ga-circle { align-items: center; justify-content: center; gap: 2%; padding: 0 !important; }
+.ga-circle img { width: 25%; margin: 0; }
+.ga-circle img:nth-child(2) { width: 29%; margin: 0; }
+.ga-track .card__media .card__view { place-items: stretch !important; padding: 7% 9% 9% !important; }
+.ga-track .card__media img { border-radius: 12px; }
+.pdp__media { align-self: start; }
+.modal__close { background: rgb(255 255 255 / 0.88); color: #222; border-radius: 999px; padding: 6px 14px; }
+.pdp__media { padding: 0 !important; background: none !important; }
