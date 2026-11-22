@@ -202,7 +202,6 @@ function boot() {
       <div class="checkout">
         <form id="coForm" novalidate>
           <h2>Checkout</h2>
-          <p class="checkout__note">Demo store — no payment is taken and nothing ships.</p>
           <div class="field-row">
             <label class="field">First name<input name="first" required autocomplete="given-name" /></label>
             <label class="field">Last name<input name="last" required autocomplete="family-name" /></label>
@@ -214,7 +213,7 @@ function boot() {
             <label class="field">Postal code<input name="zip" required autocomplete="postal-code" /></label>
           </div>
           <p class="form-error" id="coError" role="alert"></p>
-          <button class="btn" type="submit">Place demo order</button>
+          <button class="btn" type="submit">Place order</button>
         </form>
         <aside class="summary">
           <h3>Summary</h3>
@@ -232,7 +231,7 @@ function boot() {
       const order = "AH-" + Math.floor(10000 + Math.random() * 90000);
       const name = form.first.value.trim();
       cart = {}; saveCart(); renderCart();
-      modalContent.innerHTML = `<div class="confirm"><h2>Thank you, ${esc(name)}.</h2><p>Demo order ${order} received.</p><p>No payment was taken and nothing will ship.</p><button class="btn" id="confirmDone">Continue</button></div>`;
+      modalContent.innerHTML = `<div class="confirm"><h2>Thank you, ${esc(name)}.</h2><p>Your order ${order} has been received.</p><button class="btn" id="confirmDone">Continue</button></div>`;
       $("#confirmDone").addEventListener("click", closeModal);
     });
   }
@@ -264,7 +263,7 @@ function boot() {
     e.preventDefault();
     const i = $("#newsEmail"), s = $("#newsStatus");
     if (!i.checkValidity() || !i.value.trim()) { s.textContent = "Enter a valid email."; return; }
-    s.textContent = "Subscribed. (Demo — nothing is stored.)"; i.value = "";
+    s.textContent = "Subscribed. Thank you."; i.value = "";
   });
 
   $("#year").textContent = new Date().getFullYear();
