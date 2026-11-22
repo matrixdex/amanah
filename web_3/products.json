@@ -1,13 +1,28 @@
 {
   "company": "Amanah Health Products",
+  "address": {
+    "line1": "P.O. Box No. 79414",
+    "city": "London",
+    "postcode": "N12 2GU",
+    "country": "United Kingdom"
+  },
   "currency": "GBP",
   "currencySymbol": "£",
   "freeShippingOver": 60,
   "shippingFlat": 5,
   "categories": [
-    { "id": "nutrition", "name": "Nutrition" },
-    { "id": "joint-care", "name": "Joint care" },
-    { "id": "digestive", "name": "Digestive" }
+    {
+      "id": "nutrition",
+      "name": "Nutrition"
+    },
+    {
+      "id": "joint-care",
+      "name": "Joint care"
+    },
+    {
+      "id": "digestive",
+      "name": "Digestive"
+    }
   ],
   "products": [
     {
