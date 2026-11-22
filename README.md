@@ -1,12 +1,11 @@
 # amanah
 
-Five independent storefront designs for **Amanah Health Products** (Dr Ali's range) — demo
+Four independent storefront designs for **Amanah Health Products** (Dr Ali's range) — demo
 stores, no real orders are taken.
 
 ```
-index.html · styles.css   simple root page linking to the five sites
+index.html · styles.css   simple root page linking to the four sites
 web_1/   Editorial
-web_2/   Split screen
 web_3/   Gallery · Mughal garden
 web_4/   Swiss grid
 web_5/   Bento
