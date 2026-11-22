@@ -412,3 +412,13 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .ed-nav { background: color-mix(in srgb, var(--bg) 80%, transparent); -webkit-backdrop-filter: blur(20px) saturate(160%); backdrop-filter: blur(20px) saturate(160%); }
 @media (prefers-reduced-transparency: reduce) { .ed-nav { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 @media (max-width: 760px) { .ed-nav__links { display: none; } .ed-nav__top { padding-bottom: 14px; } }
+
+/* mobile: centred menu items and page headings */
+@media (max-width: 760px) {
+  .menu__links { align-items: center; text-align: center; }
+  .menu__top { position: relative; justify-content: center; }
+  .menu__close { position: absolute; right: 0; top: 50%; translate: 0 -50%; }
+  main h1, main h2 { text-align: center; margin-inline: auto; }
+  .ed-head, .be-head, .sp-head, .ga-shop .wrap { justify-content: center; text-align: center; }
+  .ed-head > div, .sw-shophead > .sw-pad, .sw-hero__text { text-align: center; align-items: center; }
+}

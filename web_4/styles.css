@@ -416,3 +416,13 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .menu__cart { border-radius: 0; font-family: var(--mono); text-transform: uppercase; font-size: 0.85rem; }
 .menu__close { border-radius: 0; }
 .sw-nav .menu-btn { background: var(--bg); }
+
+/* mobile: centred menu items and page headings */
+@media (max-width: 760px) {
+  .menu__links { align-items: center; text-align: center; }
+  .menu__top { position: relative; justify-content: center; }
+  .menu__close { position: absolute; right: 0; top: 50%; translate: 0 -50%; }
+  main h1, main h2 { text-align: center; margin-inline: auto; }
+  .ed-head, .be-head, .sp-head, .ga-shop .wrap { justify-content: center; text-align: center; }
+  .ed-head > div, .sw-shophead > .sw-pad, .sw-hero__text { text-align: center; align-items: center; }
+}
