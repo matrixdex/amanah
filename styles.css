@@ -1,47 +1,20 @@
-/* Landing page — links to the five designs in web_1 … web_5 */
-:root {
-  --bg: #f7f5f1;
-  --card: #ffffff;
-  --text: #222222;
-  --muted: #6b6b6b;
-  --line: #e3e0da;
-  --accent: #c9a24b;
-  color-scheme: light;
+:root{
+  --bg:#FFFEEB;
+  --ink:#0A213E;
+  --muted:#3B4E6B;
+  --accent:#1D4E89;
+  --gutter:1.25rem;
+  --spring:linear(0,.0509,.1621,.2926,.4206,.5357,.6341,.7154,.781,.8328,.8734,.9046,.9286,.9468,.9605,.9707,.9784,.9841,.9884,.9915,.9938,.9955,.9967,.9976,.9983,.9987,.9991,.9993,1);
 }
-
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text); font: 400 15px/1.6 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-a { color: inherit; text-decoration: none; }
-.wrap { width: min(1200px, 100% - 32px); margin: 0 auto; }
-
-.intro { padding: 72px 0 40px; }
-.kicker { margin: 0 0 12px; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
-h1 { font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; margin: 0 0 8px; }
-.lead { color: var(--muted); margin: 0; max-width: 640px; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; padding-bottom: 72px; }
-.d { position: relative; display: block; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: var(--card); transition: transform 0.3s, box-shadow 0.3s; }
-.d:hover, .d:focus-visible { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgb(0 0 0 / 0.25); }
-.d:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-/* mini wireframe of each layout */
-.wf { height: 220px; padding: 16px; display: grid; gap: 6px; }
-.wf i, .wf b { display: block; border-radius: 4px; }
-.wf-row { border-top: 1px solid #d6c8b8; border-radius: 0 !important; background: linear-gradient(90deg, var(--c) 0 100%) 30px 9px / var(--w) 6px no-repeat; }
-
-.meta { padding: 18px 22px 20px; border-top: 1px solid var(--line); }
-.meta b { font-weight: 500; font-size: 1.05rem; }
-.meta p { margin: 4px 0 10px; color: var(--muted); font-size: 0.86rem; }
-.tag { display: inline-block; font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; background: #f0eee9; color: #555; margin-right: 6px; }
-.sw { display: inline-flex; vertical-align: middle; margin-left: 4px; }
-.sw i { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; margin-left: -5px; box-shadow: 0 0 0 1px var(--line); }
-
-/* "Last viewed" badge, set by script.js */
-.d.is-last::after { content: "Last viewed"; position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 999px; background: var(--text); color: #fff; font-size: 0.72rem; box-shadow: 0 0 0 1px rgb(201 162 75 / 0.6), 0 0 20px -4px rgb(201 162 75 / 0.8); }
-
-.foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 24px 0 40px; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--muted); }
-
-@media (max-width: 420px) {
-  .grid { grid-template-columns: 1fr; }
-  .wf { height: 180px; }
-}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100svh;background:var(--bg);color:var(--ink);font:100%/1.5 system-ui,-apple-system,sans-serif;display:grid;place-items:center;padding:var(--gutter)}
+main{width:min(100%,32rem)}
+h1{font-size:clamp(2rem,6vw,3rem);line-height:1.05;letter-spacing:-.02em;margin:0 0 .5rem}
+.lede{color:var(--muted);margin:0 0 2rem}
+.sites{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.sites a{display:block;padding:1.1rem 1.25rem;border-radius:1rem;background:#fff;color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:-.01em;border:1px solid rgba(10,33,62,.12);transition:transform .35s var(--spring),box-shadow .35s var(--spring)}
+.sites a:hover{box-shadow:0 .5rem 1.5rem rgba(10,33,62,.12)}
+.sites a:active{transform:scale(.97);transition-duration:.1s}
+.sites a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.sites a{transition:none}.sites a:active{transform:none}}

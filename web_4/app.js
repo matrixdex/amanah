@@ -303,6 +303,3 @@ $("#newsForm").addEventListener("submit", (e) => {
 $("#year").textContent = new Date().getFullYear();
 renderGrid();
 renderCart();
-
-/* Remember the last design viewed, for the landing page */
-try { localStorage.setItem("still-last-design", "web_4"); } catch (e) {}

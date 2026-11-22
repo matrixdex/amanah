@@ -310,6 +310,3 @@ document.querySelectorAll("[data-scroll]").forEach((b) => b.addEventListener("cl
   const step = card ? card.getBoundingClientRect().width + 24 : 320;
   track.scrollBy({ left: step * Number(b.dataset.scroll), behavior: "smooth" });
 }));
-
-/* Remember the last design viewed, for the landing page */
-try { localStorage.setItem("still-last-design", "web_3"); } catch (e) {}
