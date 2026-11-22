@@ -352,3 +352,67 @@ body.is-scrolling .sw-table { pointer-events: none; }
 .foot-logo { display: block; flex: none; width: 52px; height: 52px; }
 .ed-foot, .sp-foot, .ga-foot, .sw-foot, .be-foot { align-items: center; }
 .ed-foot, .sp-foot, .ga-foot, .sw-foot, .be-foot { justify-content: center; text-align: center; }
+
+/* ==================== Refinements: menu, motion, materials ==================== */
+:root { --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1); --ease-out: cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* respond on press, instantly; no double-tap delay */
+button, a, summary { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.btn:active:not(:disabled), .bag:active, .be-bag:active, .sw-bag:active, .menu-btn:active, .menu__close:active,
+.menu__cart:active, .card__add:active, .row__add:active, .cell__add:active, .filter:active, .be-btn:active,
+.ga-btn:active, .news__form button:active, .qty button:active, .ga-arrow:active, .s-pay:active { scale: 0.97; }
+:focus-visible { outline: 2px solid var(--hl); outline-offset: 3px; }
+
+/* header: cart + menu button */
+.nav-actions { display: flex; align-items: center; justify-content: flex-end; gap: 14px; justify-self: end; }
+.menu-btn { display: none; place-items: center; width: 44px; height: 44px; margin: -10px -10px -10px 0; padding: 0; border: 0; border-radius: 999px; background: none; color: var(--text); cursor: pointer; }
+@media (max-width: 760px) { .menu-btn { display: grid; } }
+
+/* full-screen menu: a translucent material that grows out of the menu button */
+.menu { position: fixed; inset: 0; z-index: 80; display: flex; flex-direction: column;
+  padding: max(14px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px));
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  -webkit-backdrop-filter: blur(28px) saturate(160%); backdrop-filter: blur(28px) saturate(160%);
+  opacity: 0; transform: scale(0.96); transition: opacity 0.3s var(--ease-out), transform 0.45s var(--ease-sheet); }
+.menu.is-open { opacity: 1; transform: none; }
+.menu__top { display: flex; align-items: center; justify-content: space-between; min-height: 56px; }
+.menu__logo { display: inline-flex; align-items: center; gap: 0.45em; font-family: var(--font-head); font-size: 1.5rem; letter-spacing: -0.02em; color: var(--text); }
+.menu__logo img { width: 1.5em; height: 1.5em; }
+.menu__close { display: grid; place-items: center; width: 44px; height: 44px; margin-right: -6px; padding: 0; border: 0; border-radius: 999px;
+  background: color-mix(in srgb, var(--text) 9%, transparent); color: var(--text); cursor: pointer; }
+.menu__links { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.menu__links a { font-family: var(--font-head); font-size: clamp(2.4rem, 11vw, 3.4rem); line-height: 1.12; letter-spacing: -0.025em; color: var(--text); padding: 6px 0; }
+.menu__cart { border: 1px solid var(--text); border-radius: 999px; background: none; color: var(--text); padding: 15px; font: inherit; font-size: 1rem; cursor: pointer; }
+.menu__links a, .menu__cart { opacity: 0; transform: translateY(14px);
+  transition: opacity 0.4s var(--ease-out), transform 0.55s var(--ease-sheet); transition-delay: calc(var(--i, 0) * 40ms + 60ms); }
+.menu.is-open .menu__links a, .menu.is-open .menu__cart { opacity: 1; transform: none; }
+.menu:not(.is-open) .menu__links a, .menu:not(.is-open) .menu__cart { transition-delay: 0s; }
+
+/* sheets: one curve, same path in and out; cart can be swiped away */
+.overlay { transition: opacity 0.4s var(--ease-out); }
+.drawer { transition: transform 0.5s var(--ease-sheet); touch-action: pan-y; }
+.modal { transition: opacity 0.3s var(--ease-out), visibility 0.3s; }
+.modal__panel { opacity: 0; transform: scale(0.94); transition: opacity 0.3s var(--ease-out), transform 0.5s var(--ease-sheet); }
+.modal.is-open .modal__panel { opacity: 1; transform: none; }
+.toast { transition: opacity 0.3s var(--ease-out), transform 0.5s var(--ease-sheet); }
+
+/* type: balanced headings, optical sizing, aligned figures */
+h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
+.card__price, .row__price, .cell__price, .pdp__price, .drawer__row, .line__end, .summary__line, [data-cart-count] { font-variant-numeric: tabular-nums; }
+
+/* accessibility: gentler motion, solid materials, stronger edges */
+@media (prefers-reduced-motion: reduce) {
+  .menu, .modal__panel, .menu__links a, .menu__cart { transform: none !important; transition: opacity 0.2s ease !important; transition-delay: 0s !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .menu { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .menu { background: var(--bg); }
+  .menu__close { box-shadow: inset 0 0 0 1px var(--text); }
+}
+.sw-nav .menu-btn { width: auto; height: auto; margin: 0; padding: 0 22px; border-radius: 0; color: var(--text); }
+@media (max-width: 760px) { .sw-nav { grid-template-columns: 1fr auto auto; } }
+.menu__cart { border-radius: 0; font-family: var(--mono); text-transform: uppercase; font-size: 0.85rem; }
+.menu__close { border-radius: 0; }
+.sw-nav .menu-btn { background: var(--bg); }

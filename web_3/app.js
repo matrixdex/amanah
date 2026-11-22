@@ -18,6 +18,51 @@ function art(p) {
   return `<img src="${esc(p.image)}" alt="${esc(p.imageAlt || p.name)}" loading="lazy" decoding="async" />`;
 }
 
+/* ---------- Full-screen menu (mobile) ---------- */
+let lastPoint = { x: innerWidth / 2, y: innerHeight / 2 };
+document.addEventListener("pointerdown", (e) => { lastPoint = { x: e.clientX, y: e.clientY }; }, { capture: true, passive: true });
+(() => {
+  const menu = document.getElementById("menu"), btn = document.querySelector(".menu-btn");
+  if (!menu || !btn) return;
+  const closeBtn = menu.querySelector(".menu__close");
+  let hideTimer = 0;
+  const focusables = () => [...menu.querySelectorAll("a, button")];
+  function openMenu() {
+    clearTimeout(hideTimer);
+    const r = btn.getBoundingClientRect();
+    menu.style.transformOrigin = `${r.left + r.width / 2}px ${r.top + r.height / 2}px`;   /* grows out of the button */
+    menu.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => menu.classList.add("is-open")));
+    btn.setAttribute("aria-expanded", "true");
+    document.body.classList.add("lock");
+    closeBtn.focus({ preventScroll: true });
+  }
+  function closeMenu(returnFocus = true) {
+    if (menu.hidden) return;
+    menu.classList.remove("is-open");
+    btn.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("lock");
+    hideTimer = setTimeout(() => { menu.hidden = true; }, 420);
+    if (returnFocus) btn.focus({ preventScroll: true });
+  }
+  btn.addEventListener("click", openMenu);
+  closeBtn.addEventListener("click", () => closeMenu());
+  menu.addEventListener("click", (e) => {
+    if (e.target.closest(".menu__links a, .menu__logo")) closeMenu(false);
+    if (e.target.closest(".menu__cart")) closeMenu(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (menu.hidden || !menu.classList.contains("is-open")) return;
+    if (e.key === "Escape") { closeMenu(); return; }
+    if (e.key === "Tab") {
+      const f = focusables(), first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  matchMedia("(min-width: 761px)").addEventListener("change", (m) => { if (m.matches) closeMenu(false); });
+})();
+
 function boot() {
   /* ---------- Cart state ---------- */
   let cart = loadCart();
@@ -62,7 +107,7 @@ function boot() {
         <span class="row__num">No. ${num}</span>
         <button class="row__name" data-action="view">${esc(p.name)}<em>${esc(p.sub)}</em></button>
         <span class="row__price">${fmt(p.price)}</span>
-        <button class="row__add" data-action="add">Add to bag</button>
+        <button class="row__add" data-action="add">Add to cart</button>
         <div class="row__img" aria-hidden="true">${art(p)}</div>
       </article>`;
     if (THEME.layout === "table") return `
@@ -70,13 +115,13 @@ function boot() {
         <div class="cell__top"><span>${num}</span><span>${CATS[p.cat]}</span></div>
         <button class="cell__media" data-action="view" aria-label="View ${esc(p.name)}">${art(p)}</button>
         <div class="cell__foot"><button class="cell__name" data-action="view">${esc(p.name)}<small>${esc(p.sub)}</small></button><span class="cell__price">${fmt(p.price)}</span></div>
-        <button class="cell__add" data-action="add">+ Add to bag</button>
+        <button class="cell__add" data-action="add">+ Add to cart</button>
       </article>`;
     return `
       <article class="card" data-id="${p.id}">
         <div class="card__media">
           <button class="card__view" data-action="view" aria-label="View ${esc(p.name)}" style="display:grid;place-items:center;height:100%">${art(p)}</button>
-          <button class="card__add" data-action="add">Add to bag</button>
+          <button class="card__add" data-action="add">Add to cart</button>
         </div>
         <button class="card__view" data-action="view" tabindex="-1">
           <div class="card__info">
@@ -122,6 +167,42 @@ function boot() {
   $("[data-close-drawer]").addEventListener("click", closeDrawer);
   overlay.addEventListener("click", closeDrawer);
 
+  /* ---------- Swipe the cart away: 1:1 tracking, momentum decides ---------- */
+  (() => {
+    let start = null, dx = 0, dragging = false, hist = [];
+    const width = () => drawer.getBoundingClientRect().width;
+    const rubber = (o, dim) => (o * dim * 0.55) / (dim + 0.55 * Math.abs(o));
+    drawer.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "mouse" || !drawer.classList.contains("is-open") || e.target.closest("button, a, input")) return;
+      start = { x: e.clientX, y: e.clientY, id: e.pointerId }; dx = 0; dragging = false; hist = [{ x: e.clientX, t: e.timeStamp }];
+    });
+    drawer.addEventListener("pointermove", (e) => {
+      if (!start || e.pointerId !== start.id) return;
+      const mx = e.clientX - start.x, my = e.clientY - start.y;
+      if (!dragging) {
+        if (Math.abs(my) > 10 && Math.abs(my) > Math.abs(mx)) { start = null; return; }  /* it's a scroll */
+        if (Math.abs(mx) < 10) return;
+        dragging = true; try { drawer.setPointerCapture(e.pointerId); } catch (err) {} drawer.style.transition = "none";
+      }
+      dx = mx > 0 ? mx : rubber(mx, width());
+      drawer.style.transform = `translateX(${dx}px)`;
+      overlay.style.opacity = String(Math.max(0, 1 - Math.max(0, dx) / width()));
+      hist.push({ x: e.clientX, t: e.timeStamp }); if (hist.length > 6) hist.shift();
+    });
+    const end = (e) => {
+      if (!start || (e && e.pointerId !== start.id)) return;
+      start = null; if (!dragging) return; dragging = false;
+      const a = hist[0], b = hist[hist.length - 1], dt = Math.max(1, b.t - a.t);
+      const v = ((b.x - a.x) / dt) * 1000;                                 /* px/s */
+      const projected = dx + (v / 1000) * 0.998 / (1 - 0.998);
+      drawer.style.transition = ""; overlay.style.opacity = "";
+      drawer.style.transform = "";
+      if (projected > width() / 2) closeDrawer();
+    };
+    drawer.addEventListener("pointerup", end);
+    drawer.addEventListener("pointercancel", end);
+  })();
+
   function renderCart() {
     const items = cartItems(), sub = subtotal();
     $$("[data-cart-count]").forEach((el) => (el.textContent = items.reduce((s, i) => s + i.q, 0)));
@@ -137,7 +218,7 @@ function boot() {
           <div class="qty"><button data-qty="-1" aria-label="Decrease quantity">−</button><span>${q}</span><button data-qty="1" aria-label="Increase quantity">+</button></div>
         </div>
         <div class="line__end"><span>${fmt(p.price * q)}</span><button class="text-btn" data-remove>Remove</button></div>
-      </div>`).join("") : `<p class="empty">Your bag is empty.</p>`;
+      </div>`).join("") : `<p class="empty">Your cart is empty.</p>`;
   }
   $("#cartBody").addEventListener("click", (e) => {
     const line = e.target.closest(".line"); if (!line) return;
@@ -149,7 +230,11 @@ function boot() {
 
   /* ---------- Modal ---------- */
   function openModal(html) {
-    if (!modal.classList.contains("is-open")) lastFocus = document.activeElement;
+    if (!modal.classList.contains("is-open")) {
+      lastFocus = document.activeElement;
+      const panel = $(".modal__panel"), r = panel.getBoundingClientRect();
+      panel.style.transformOrigin = `${lastPoint.x - r.left}px ${lastPoint.y - r.top}px`;
+    }
     modalContent.innerHTML = html;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
@@ -184,7 +269,7 @@ function boot() {
           <dl>${[["Ingredients", p.ingredients], ["Directions", p.directions], ["Warnings", p.warnings], ["Storage", p.storage], ["Size", p.size], ["Category", CATS[p.cat]]].filter((r) => r[1]).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
           <div class="pdp__buy">
             <div class="qty"><button data-q="-1" aria-label="Decrease quantity">−</button><span id="pdpQty">1</span><button data-q="1" aria-label="Increase quantity">+</button></div>
-            <button class="btn" id="pdpAdd">Add to bag</button>
+            <button class="btn" id="pdpAdd">Add to cart</button>
           </div>
         </div>
       </div>`);
