@@ -585,7 +585,7 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 @media (max-width: 640px) { #products .be-head { padding: 36px 0; } }
 
 /* ===== Type scale: four font sizes only (body, large body, title, hero) ===== */
-:root { --fs-body: 16px; --fs-large: 24px; --fs-title: 36px; --fs-hero: 56px; }
+:root { --fs-body: 14px; --fs-large: 24px; --fs-title: 36px; --fs-hero: 56px; }
 @media (max-width: 640px) { :root { --fs-large: 22px; --fs-title: 30px; --fs-hero: 40px; } }
 body, body * { font-size: var(--fs-body) !important; }
 /* large body: sub-headings and prices */
