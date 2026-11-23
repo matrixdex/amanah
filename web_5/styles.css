@@ -248,7 +248,7 @@ body.is-scrolling .grid, body.is-scrolling .hero { pointer-events: none; }
 /* ==================== Bento layout ==================== */
 /* min5, Bento · Pastel multi-colour (semi-minimal) */
 :root { --bg: #f4f1ec; --surface: #fdfbf7; --tile: #dfe8d8; --text: #2d2a32; --muted: #6c6774; --line: rgba(45, 42, 50, 0.12);
-  --accent: #6b5b8c; --hl: #8e6cc2; --hl-2: #a98bd6; --hl-rgb: 142 108 194; --on-hl: #ffffff; --overlay: rgb(45 42 50 / 0.35);
+  --accent: #780505; --hl: #780505; --hl-2: #780505; --hl-rgb: 120 5 5; --on-hl: #ffffff; --overlay: rgb(45 42 50 / 0.35);
   --radius: 28px; --font-body: "Plus Jakarta Sans", system-ui, sans-serif; --head-weight: 500; --h1-spacing: -0.045em;
   --c-sage: #dfe8d8; --c-blush: #f6dcd4; --c-butter: #f7ecc8; --c-lav: #e4dcf1; }
 .btn, .pdp__buy .qty { border-radius: 999px; }
