@@ -600,3 +600,8 @@ body, body * { font-size: var(--fs-body) !important; }
 @media (max-width: 640px) { #products .be-grid .card:nth-child(n+2) { display: none; } }
 .be-more { display: flex; justify-content: center; padding: 32px 0 8px; }
 .be-more .be-btn { align-self: center; }
+
+/* card: price right-aligned on the same row as the title (mobile and widescreen) */
+.be-grid .card__info, .pp-more .be-grid .card__info { flex-direction: row !important; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.be-grid .card__info h3 { margin: 0; line-height: 1.35; }
+.be-grid .card__price { margin: 0 !important; line-height: 1.35; white-space: nowrap; text-align: right; flex: none; }
