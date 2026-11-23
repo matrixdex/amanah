@@ -106,7 +106,7 @@ function boot() {
     if (THEME.layout === "list") return `
       <article class="card row" data-id="${p.id}">
         <span class="row__num">No. ${num}</span>
-        <button class="row__name" data-action="view">${esc(p.name)}<em>${esc(p.sub)}</em><em class="benefit-line">${esc(benefit(p))}</em></button>
+        <button class="row__name" data-action="view">${esc(p.name)}<em class="benefit-line">${esc(benefit(p))}</em></button>
         <span class="row__price">${fmt(p.price)}</span>
         <button class="row__add" data-action="add">Add to cart</button>
         <div class="row__img" aria-hidden="true">${art(p)}</div>
@@ -115,7 +115,7 @@ function boot() {
       <article class="card cell" data-id="${p.id}">
         <div class="cell__top"><span>${num}</span><span>${CATS[p.cat]}</span></div>
         <button class="cell__media" data-action="view" aria-label="View ${esc(p.name)}">${art(p)}</button>
-        <div class="cell__foot"><button class="cell__name" data-action="view">${esc(p.name)}<small>${esc(p.sub)}</small><small class="benefit-line">${esc(benefit(p))}</small></button><span class="cell__price">${fmt(p.price)}</span></div>
+        <div class="cell__foot"><button class="cell__name" data-action="view">${esc(p.name)}<small class="benefit-line">${esc(benefit(p))}</small></button><span class="cell__price">${fmt(p.price)}</span></div>
         <button class="cell__add" data-action="add">+ Add to cart</button>
       </article>`;
     return `
@@ -126,7 +126,7 @@ function boot() {
         </div>
         <button class="card__view" data-action="view" tabindex="-1">
           <div class="card__info">
-            <div><h3>${esc(p.name)}</h3><p>${esc(p.sub)}</p><p class="card__benefit">${esc(benefit(p))}</p></div>
+            <div><h3>${esc(p.name)}</h3><p class="card__benefit">${esc(benefit(p))}</p></div>
             <span class="card__price">${fmt(p.price)}</span>
           </div>
         </button>
