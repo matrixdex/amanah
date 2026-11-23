@@ -507,3 +507,10 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .be-box--art { grid-row: auto; min-height: 460px; }
 .be-box--art img { object-position: center; }
 @media (max-width: 960px) { .be-hero { grid-template-columns: 1fr; } .be-box--hero { grid-column: auto; } .be-box--art { min-height: 0; aspect-ratio: 16 / 9; } }
+
+/* buttons: colour changes only, no glow or shimmer */
+.btn, .btn:hover, .btn:focus-visible, .be-btn, .be-btn:hover, .be-bag, .be-bag:hover, .card__add, .card__add:hover,
+.be-filters .filter, .be-filters .filter.is-active, .filter:hover, .menu__cart, .menu__cart:hover,
+.news__form button, .news__form button:hover, .qty button, .qty button:hover, .text-btn, .text-btn:hover,
+.menu-btn, .menu-btn:hover, .menu__close, .menu__close:hover, .row__add, .cell__add { box-shadow: none !important; text-shadow: none !important; filter: none !important; }
+.btn::before, .btn::after, .be-btn::before, .be-btn::after, .be-bag::before, .be-bag::after, .card__add::before, .card__add::after { display: none !important; }
