@@ -500,3 +500,10 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .benefits li { background: var(--tile); border: 0; border-radius: 16px; padding: 14px 18px; margin-bottom: 8px; }
 .benefits li:last-child { border: 0; }
 .pdp--page .pdp__media { border-radius: var(--radius); }
+
+/* hero: copy box + one range photo */
+.be-hero { grid-template-columns: 1fr 2fr; grid-template-rows: auto; }
+.be-box--hero { grid-row: auto; grid-column: auto; }
+.be-box--art { grid-row: auto; min-height: 460px; }
+.be-box--art img { object-position: center; }
+@media (max-width: 960px) { .be-hero { grid-template-columns: 1fr; } .be-box--hero { grid-column: auto; } .be-box--art { min-height: 0; aspect-ratio: 16 / 9; } }
