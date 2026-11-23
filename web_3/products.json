@@ -104,17 +104,17 @@
     {
       "id": "bowel-ease-concept",
       "name": "Bowel Ease Concept",
-      "subtitle": "Natural blend · 100 tablets",
+      "subtitle": "Natural blend",
       "category": "digestive",
       "price": 30.0,
-      "size": "100 tablets",
+      "size": "Powder",
       "description": "A natural blend by the renowned physician Hakeem Abdul Hameed, first formulated in the 1920s. A healthy gut and regular bowel movement are key to good health.",
       "ingredients": null,
-      "directions": "Take 1 tablet at bedtime with a glass of lukewarm water. Up to 4 tablets can be taken depending upon the need. If possible drink a glass of warm water on an empty stomach.",
+      "directions": null,
       "warnings": "Consult your healthcare provider before use, particularly if you are pregnant, breastfeeding, or managing a medical condition. Do not exceed the recommended daily dose. If symptoms persist, discontinue use and seek medical advice.",
       "storage": "Store in a cool & dry place.",
       "image": "assets/products/bowel-ease-concept.jpg",
-      "imageAlt": "Amanah Health Products Dr Ali's Bowel Ease Concept, 100 tablets bottle",
+      "imageAlt": "Amanah Health Products Dr Ali's Bowel Ease Concept pouch",
       "available": true,
       "benefits": [
         {
@@ -123,7 +123,7 @@
         },
         {
           "title": "Supports regular bowel movement",
-          "text": "Take at bedtime with a glass of lukewarm water, and up to 4 tablets depending on need."
+          "text": "A natural blend traditionally used to keep bowel movement regular."
         },
         {
           "title": "A traditional formula",
