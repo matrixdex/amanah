@@ -588,7 +588,7 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 /* ===== Widescreen hero: large title, photo cut at about half the first screen ===== */
 @media (min-width: 761px) {
   .ga-hero {
-    --fs: clamp(3rem, 7vw, 6.4rem);
+    --fs: 90px;
     --hh: calc(min(1040px, 100vw - 32px) * 9 / 16);
     --free: max(0px, calc(100svh - 72px - 2 * var(--fs) - var(--hh) / 2 - 144px));
     padding-top: calc(64px + var(--free) / 2);
