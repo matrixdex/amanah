@@ -1,77 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Shop all — Amanah Health Products</title>
-<meta name="description" content="All Amanah Health Products.">
-<link rel="icon" href="assets/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop all — Amanah Health Products</title>
+  <meta name="description" content="All Amanah Health Products, natural products by Dr Ali's." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-page="shop">
-<header class="site-header" id="nav">
-  <div class="wrap site-header__inner">
-    <nav class="site-nav" aria-label="Main">
-      <a href="shop.html" aria-current="page">Shop</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#faq">FAQ</a>
-    </nav>
-    <a class="brand" href="index.html" aria-label="Amanah Health Products home"><img class="brand__mark" src="assets/logo.png" alt="">Amanah</a>
-    <div class="site-actions">
-      <button class="cart-btn" type="button" data-open-cart>Cart (<span data-cart-count>0</span>)</button>
-      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7h16M3 15h16"/></svg></button>
+<body>
+  <header class="be-nav" id="nav">
+    <div class="be-pill">
+      <a href="index.html" class="be-logo"><img class="brand-logo" src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
+      <nav class="be-links" aria-label="Primary"><a href="shop.html">Shop</a><a href="index.html#about">About</a><a href="index.html#faq">FAQ</a></nav>
+      <button class="be-bag" data-open-cart>Cart <span data-cart-count>0</span></button><button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
+    </div>
+  </header>
+
+  <main id="top" class="wrap"><section class="be-sec"><div class="be-head"><h1>Shop all</h1></div><div class="be-grid" id="grid"></div></section></main>
+
+  <footer class="be-foot wrap"><span class="foot-brand"><img class="foot-logo" src="assets/logo.png" alt="Amanah Health Products" width="256" height="256" /><span>© <span id="year"></span> Amanah Health Products. All Rights Reserved.</span></span></footer>
+
+
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="menu__top">
+      <a href="index.html" class="menu__logo"><img src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
+      <button class="menu__close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
+    </div>
+    <nav class="menu__links" aria-label="Menu"><a href="shop.html" style="--i:0">Shop</a><a href="index.html#about" style="--i:1">About</a><a href="index.html#faq" style="--i:2">FAQ</a></nav>
+    <button class="menu__cart" type="button" data-open-cart style="--i:3">Cart (<span data-cart-count>0</span>)</button>
+  </div>
+
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer__head">
+      <h2>Cart</h2>
+      <button class="text-btn" data-close-drawer>Close</button>
+    </div>
+    <div class="drawer__body" id="cartBody"></div>
+    <div class="drawer__foot">
+      <p class="ship" id="shipText"></p>
+      <div class="drawer__row"><span>Subtotal</span><span id="subtotal">£0.00</span></div>
+      <button class="btn" id="checkoutBtn">Checkout</button>
+    </div>
+  </aside>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="text-btn modal__close" aria-label="Close">Close</button>
+      <div id="modalContent"></div>
     </div>
   </div>
-</header>
 
-<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
-  <div class="menu__top">
-    <a class="menu__logo" href="index.html"><img src="assets/logo.png" alt="">Amanah</a>
-    <button class="menu__close" type="button" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></svg></button>
-  </div>
-  <nav class="menu__links" aria-label="Menu">
-    <a href="shop.html" style="--i:0">Shop</a>
-    <a href="index.html#about" style="--i:1">About</a>
-    <a href="index.html#faq" style="--i:2">FAQ</a>
-    <button class="menu__cart" type="button" style="--i:3">Cart (<span data-cart-count>0</span>)</button>
-  </nav>
-</div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<main>
-<div class="wrap">
-  <div class="page-head"><h1>Shop all</h1><p id="shopCount"></p></div>
-  <div class="product-grid" id="grid"></div>
-</div>
-<div style="height:clamp(56px,9vw,112px)"></div>
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <img class="footer-logo" src="assets/logo.png" alt="">
-    <p>&copy; <span id="year">2026</span> Amanah Health Products. All Rights Reserved.</p>
-  </div>
-</footer>
-
-<div class="overlay" id="overlay" hidden></div>
-<aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
-  <div class="drawer__head"><h2>Cart</h2><button class="text-btn" type="button" data-close-drawer>Close</button></div>
-  <div class="drawer__body" id="cartBody"></div>
-  <div class="drawer__foot">
-    <p class="ship" id="shipText"></p>
-    <div class="drawer__row"><span>Subtotal</span><span id="subtotal">£0.00</span></div>
-    <button class="btn btn--block" type="button" id="checkoutBtn">Checkout</button>
-  </div>
-</aside>
-<div class="modal" id="modal" aria-hidden="true">
-  <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Checkout">
-    <button class="text-btn modal__close" type="button">Close</button>
-    <div id="modalContent"></div>
-  </div>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="app.js" defer></script>
+  <script src="app.js"></script>
 </body>
 </html>
