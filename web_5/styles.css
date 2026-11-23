@@ -558,3 +558,10 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
   .be-foot { padding-block: 20px 28px; }
   .be-foot .foot-brand { flex-direction: column; text-align: center; gap: 10px; }
 }
+
+/* stacked hero (up to 960px): copy and button centred */
+@media (max-width: 960px) {
+  .be-box--hero { align-items: center; text-align: center; }
+  .be-box--hero h1 { text-align: center; }
+  .be-box--hero .be-btn { align-self: center; }
+}
