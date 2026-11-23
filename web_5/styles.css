@@ -519,3 +519,8 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .be-box--hero { justify-content: center; }
 .be-box--hero .be-tag { display: none; }
 .be-box--hero h1 { margin-bottom: 28px; }
+
+/* product cards: image meets the edges of the box, square corners (the box's own rounding clips it) */
+.be-grid .card { padding: 0 0 18px; overflow: hidden; }
+.be-grid .card__media, .be-grid .card__media img, .be-grid .card__view { border-radius: 0; }
+.be-grid .card__info { padding: 14px 18px 0; }
