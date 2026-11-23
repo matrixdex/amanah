@@ -514,3 +514,8 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .news__form button, .news__form button:hover, .qty button, .qty button:hover, .text-btn, .text-btn:hover,
 .menu-btn, .menu-btn:hover, .menu__close, .menu__close:hover, .row__add, .cell__add { box-shadow: none !important; text-shadow: none !important; filter: none !important; }
 .btn::before, .btn::after, .be-btn::before, .be-btn::after, .be-bag::before, .be-bag::after, .card__add::before, .card__add::after { display: none !important; }
+
+/* hero copy centred vertically in its box */
+.be-box--hero { justify-content: center; }
+.be-box--hero .be-tag { display: none; }
+.be-box--hero h1 { margin-bottom: 28px; }
