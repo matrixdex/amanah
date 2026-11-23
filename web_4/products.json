@@ -38,7 +38,34 @@
       "warnings": "Contains nuts. Some individuals may experience mild gastrointestinal discomfort or allergic reactions. If symptoms persist, discontinue use and seek medical advice.",
       "storage": "Store in a cool, dry place, away from direct sunlight. Keep the product tightly sealed and use within 6 months of opening.",
       "image": "assets/products/overnight-breakfast-muesli.jpg",
-      "imageAlt": "Amanah Health Products Dr Ali's Overnight Breakfast Muesli, 1kg pouch"
+      "imageAlt": "Amanah Health Products Dr Ali's Overnight Breakfast Muesli, 1kg pouch",
+      "available": true,
+      "benefits": [
+        {
+          "title": "Supports digestion",
+          "text": "High in fibre to promote gut health and keep you feeling satisfied longer."
+        },
+        {
+          "title": "Boosts energy",
+          "text": "Provides steady energy to fuel an active and focused day."
+        },
+        {
+          "title": "Heart-healthy",
+          "text": "Includes cholesterol-lowering oats and heart-friendly nuts and seeds."
+        },
+        {
+          "title": "Immune support",
+          "text": "Packed with vitamins, minerals and antioxidants to strengthen your immune system."
+        },
+        {
+          "title": "Glowing skin",
+          "text": "Contains skin-loving nutrients like vitamin E and omega-3s for a radiant complexion."
+        },
+        {
+          "title": "Naturally sweet",
+          "text": "Sweetened with fruits, avoiding refined sugars for a healthier choice."
+        }
+      ]
     },
     {
       "id": "joint-support-oil",
@@ -53,7 +80,26 @@
       "warnings": "Ensure you are not allergic to any of the ingredients. If you have any adverse reaction, stop using the oil and consult a healthcare provider. If pregnant or breastfeeding, use with caution and consult a healthcare provider.",
       "storage": "Store in a cool and dry place. Keep out of reach of children.",
       "image": "assets/products/joint-support-oil.jpg",
-      "imageAlt": "Amanah Health Products Dr Ali's Joint Support Oil, 200ml bottle"
+      "imageAlt": "Amanah Health Products Dr Ali's Joint Support Oil, 200ml bottle",
+      "available": true,
+      "benefits": [
+        {
+          "title": "Soothes inflamed muscles, tendons and ligaments",
+          "text": "A blend of natural oils made for the inflammation of muscles, tendons and ligaments."
+        },
+        {
+          "title": "Traditional natural oils",
+          "text": "Sesame, mustard seed, black seed and clove oils, with Mahanarayan and Rhumasyl oils."
+        },
+        {
+          "title": "Better with warmth",
+          "text": "Rub in until absorbed. Hot fomentation for 15–20 minutes gives better results."
+        },
+        {
+          "title": "Against animal testing",
+          "text": "Made in the United Kingdom without animal testing."
+        }
+      ]
     },
     {
       "id": "bowel-ease-concept",
@@ -68,7 +114,22 @@
       "warnings": "Consult your healthcare provider before use, particularly if you are pregnant, breastfeeding, or managing a medical condition. Do not exceed the recommended daily dose. If symptoms persist, discontinue use and seek medical advice.",
       "storage": "Store in a cool & dry place.",
       "image": "assets/products/bowel-ease-concept.jpg",
-      "imageAlt": "Amanah Health Products Dr Ali's Bowel Ease Concept, 100 tablets bottle"
+      "imageAlt": "Amanah Health Products Dr Ali's Bowel Ease Concept, 100 tablets bottle",
+      "available": true,
+      "benefits": [
+        {
+          "title": "Supports a healthy gut",
+          "text": "A healthy gut and regular bowel movement are key to good health."
+        },
+        {
+          "title": "Supports regular bowel movement",
+          "text": "Take at bedtime with a glass of lukewarm water, and up to 4 tablets depending on need."
+        },
+        {
+          "title": "A traditional formula",
+          "text": "A natural blend by the renowned physician Hakeem Abdul Hameed, first formulated in the 1920s."
+        }
+      ]
     }
   ]
 }

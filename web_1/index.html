@@ -1,110 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amanah Health Products — Natural health products by Dr Ali’s</title>
-  <meta name="description" content="Amanah Health Products — natural health products by Dr Ali’s, made in the United Kingdom." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="assets/logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amanah Health Products</title>
+<meta name="description" content="Dr Ali's range of traditional natural health products, shipped from the UK.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="ed-nav" id="nav">
-    <div class="wrap ed-nav__top">
-      <span class="ed-issue">Issue No. 01 — 2026</span>
-      <a href="#top" class="ed-logo"><img class="brand-logo" src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
-      <div class="nav-actions"><button class="bag" data-open-cart>Cart (<span data-cart-count>0</span>)</button><button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></div>
-    </div>
-    <nav class="wrap ed-nav__links" aria-label="Primary"><a href="#shop">The edit</a><a href="#about">About</a><a href="#faq">Questions</a></nav>
-  </header>
-
-  <main id="top">
-    <section class="ed-hero wrap">
-      <h1 class="ed-hero__title">The quiet art<br />of <em>feeling well.</em></h1>
-      <div class="ed-hero__row">
-        <div class="ed-hero__text">
-          <p class="ed-dropcap">Three natural products from Dr Ali’s — traditional formulas with every ingredient listed in full, made in the United Kingdom. A small collection, made carefully.</p>
-          <a href="#shop" class="arrow-link">Read the edit <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="ed-hero__art" id="heroArt" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <!-- ✏️ ABOUT THE COMPANY — replace the text in the next section with your own story: what the company is and what it provides. -->
-    <section class="ed-section wrap" id="about">
-      <p class="ed-chapter"></p>
-      <h2 class="ed-title">Amanah Health Products brings Dr Ali’s traditional, natural formulas to your everyday routine.</h2>
-      <div class="ed-columns">
-        <p class="ed-dropcap">Amanah Health Products Ltd. is a London company making natural products under the Dr Ali’s name — a nourishing overnight muesli, a joint support oil and a gentle bowel ease tablet. Each formula draws on traditional herbal knowledge, and every ingredient is listed in full on the pack.</p>
-        <blockquote class="ed-pull">“Traditional formulas, made carefully.”</blockquote>
-        <p><strong>What we provide.</strong> Overnight Breakfast Muesli (1kg), Joint Support Oil (200ml) and Bowel Ease Concept (100 tablets).</p>
-        <p><strong>Our promise.</strong> Natural ingredients, listed in full on every pack. Made in the United Kingdom. Against animal testing.</p>
-      </div>
-    </section>
-
-    <section class="ed-section wrap" id="shop">
-      <div class="ed-head">
-        <div><p class="ed-chapter"></p><h2 class="ed-title">Our products</h2></div>
-        <div class="filters ed-filters" id="filters" role="tablist" aria-label="Filter by category"></div>
-      </div>
-      <div class="ed-list" id="grid"></div>
-    </section>
-
-    <section class="ed-section wrap" id="faq">
-      <p class="ed-chapter"></p>
-      <div class="ed-faq"><div><h3>How long does shipping take?</h3><p>Orders ship within two working days. Shipping is free over £60.</p></div><div><h3>Can I return a product?</h3><p>Unopened products can be returned within 30 days for a full refund.</p></div><div><h3>Where are your products made?</h3><p>Our products are made in the United Kingdom by Amanah Health Products Ltd. Each product page lists its ingredients.</p></div></div>
-    </section>
-
-    <section class="ed-section ed-letters wrap">
-      <h2 class="ed-title">Letters from Amanah</h2>
-      <p>Occasional notes on new products and traditional remedies.</p>
-      <form class="news__form" id="newsForm" novalidate>
-          <label class="sr-only" for="newsEmail">Email address</label>
-          <input id="newsEmail" type="email" placeholder="Email address" required autocomplete="email" />
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="news__status" id="newsStatus" role="status" aria-live="polite"></p>
-    </section>
-  </main>
-
-  <footer class="ed-foot wrap"><span class="foot-brand"><img class="foot-logo" src="assets/logo.png" alt="Amanah Health Products" width="256" height="256" /><span>© <span id="year"></span> Amanah Health Products. All Rights Reserved.</span></span></footer>
-
-
-  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
-    <div class="menu__top">
-      <a href="#top" class="menu__logo"><img src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
-      <button class="menu__close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
-    </div>
-    <nav class="menu__links" aria-label="Menu"><a href="#shop" style="--i:0">The edit</a><a href="#about" style="--i:1">About</a><a href="#faq" style="--i:2">Questions</a></nav>
-    <button class="menu__cart" type="button" data-open-cart style="--i:3">Cart (<span data-cart-count>0</span>)</button>
-  </div>
-
-  <div class="overlay" id="overlay" hidden></div>
-  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
-    <div class="drawer__head">
-      <h2>Cart</h2>
-      <button class="text-btn" data-close-drawer>Close</button>
-    </div>
-    <div class="drawer__body" id="cartBody"></div>
-    <div class="drawer__foot">
-      <p class="ship" id="shipText"></p>
-      <div class="drawer__row"><span>Subtotal</span><span id="subtotal">£0.00</span></div>
-      <button class="btn" id="checkoutBtn">Checkout</button>
-    </div>
-  </aside>
-
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal__panel">
-      <button class="text-btn modal__close" aria-label="Close">Close</button>
-      <div id="modalContent"></div>
+<body data-page="home">
+<header class="site-header" id="nav">
+  <div class="wrap site-header__inner">
+    <nav class="site-nav" aria-label="Main">
+      <a href="shop.html">Shop</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <a class="brand" href="index.html" aria-label="Amanah Health Products home"><img class="brand__mark" src="assets/logo.png" alt="">Amanah</a>
+    <div class="site-actions">
+      <button class="cart-btn" type="button" data-open-cart>Cart (<span data-cart-count>0</span>)</button>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7h16M3 15h16"/></svg></button>
     </div>
   </div>
+</header>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="menu__top">
+    <a class="menu__logo" href="index.html"><img src="assets/logo.png" alt="">Amanah</a>
+    <button class="menu__close" type="button" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></svg></button>
+  </div>
+  <nav class="menu__links" aria-label="Menu">
+    <a href="shop.html" style="--i:0">Shop</a>
+    <a href="index.html#about" style="--i:1">About</a>
+    <a href="index.html#faq" style="--i:2">FAQ</a>
+    <button class="menu__cart" type="button" style="--i:3">Cart (<span data-cart-count>0</span>)</button>
+  </nav>
+</div>
 
-  <script src="app.js"></script>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__text">
+      <h1>Traditional wellness, made simple.</h1>
+      <p>Dr Ali's range of natural health products, from our family to yours.</p>
+      <a class="btn" href="shop.html">Shop all</a>
+    </div>
+    <div class="hero__images" id="heroImages"></div>
+  </div>
+</section>
+<section class="section" id="products">
+  <div class="wrap">
+    <div class="section__head"><h2>Our products</h2><a class="link" href="shop.html">Shop all</a></div>
+    <div class="product-grid" id="grid"></div>
+  </div>
+</section>
+<section class="section about" id="about">
+  <div class="wrap">
+    <h2>Natural products with a long tradition.</h2>
+    <div class="about__cols">
+      <div><h3>Who we are</h3><p>Amanah Health Products brings Dr Ali's range of traditional natural remedies and foods to your door, shipped from the United Kingdom.</p></div>
+      <div><h3>Our promise</h3><p>Honest ingredients, clear labels and nothing you don't need. Joint Support Oil is never tested on animals.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section faq" id="faq">
+  <div class="wrap">
+    <div class="section__head"><h2>Questions</h2></div>
+    <div class="details">
+      <details><summary>Where do you ship?</summary><p>We ship from the United Kingdom to all destinations. Delivery is a flat £5, and free on orders over £60.</p></details>
+      <details><summary>What if I'm not happy with my order?</summary><p>Contact us within 14 days of delivery and we will arrange a return or refund for unopened products.</p></details>
+      <details><summary>Are the products suitable for me?</summary><p>Always check the full ingredients before use. If you are pregnant, breastfeeding or taking medication, speak to a healthcare professional first.</p></details>
+    </div>
+  </div>
+</section>
+<section class="section newsletter">
+  <div class="wrap">
+    <h2>Stay in touch</h2>
+    <p>New products and news, occasionally.</p>
+    <form class="news__form" id="newsForm" novalidate>
+      <label class="sr-only" for="newsEmail">Email address</label>
+      <input id="newsEmail" type="email" placeholder="Email address" autocomplete="email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="news__status" id="newsStatus" role="status"></p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img class="footer-logo" src="assets/logo.png" alt="">
+    <p>&copy; <span id="year">2026</span> Amanah Health Products. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
+  <div class="drawer__head"><h2>Cart</h2><button class="text-btn" type="button" data-close-drawer>Close</button></div>
+  <div class="drawer__body" id="cartBody"></div>
+  <div class="drawer__foot">
+    <p class="ship" id="shipText"></p>
+    <div class="drawer__row"><span>Subtotal</span><span id="subtotal">£0.00</span></div>
+    <button class="btn btn--block" type="button" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Checkout">
+    <button class="text-btn modal__close" type="button">Close</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js" defer></script>
 </body>
 </html>
