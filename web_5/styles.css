@@ -16,7 +16,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 400 16px/1.65 var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 body.lock { overflow: hidden; }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 p { margin: 0; }
@@ -249,9 +249,13 @@ h2 { font-size: var(--h2-size); }
 .site-header .wrap{width:calc(100% - 40px)}
 .hero__images{gap:14px}
 .hero__img{border-radius:28px;background:#e4ece6}.hero__img:nth-child(2){background:#f0e6d8}.hero__img:nth-child(3){background:#e6e3f0}
-.card{background:var(--surface);border-radius:var(--radius);padding:14px 14px 22px;gap:14px}
-.card__body{padding-inline:8px}
-.card__img{border-radius:20px}
+.card{background:var(--surface);border-radius:var(--radius);padding:10px 10px 16px;display:grid;grid-template-columns:1fr auto;gap:0 12px;align-content:start}
+.card__img{grid-column:1/-1}
+.card__body{padding:14px 0 0 8px}.card__price{padding:14px 8px 0 0}
+.card__name{font-size:.95rem;font-weight:500;letter-spacing:0}
+.card__benefits{display:none}
+.card__img img,.hero__img img{aspect-ratio:1/1}
+.card__img{border-radius:calc(var(--radius) - 8px)}
 .card:nth-child(3n+1) .card__img{background:#e4ece6}.card:nth-child(3n+2) .card__img{background:#f0e6d8}.card:nth-child(3n) .card__img{background:#e6e3f0}
 .about__cols>div{background:var(--surface);border-radius:var(--radius);padding:32px}
 .pdp__media{border-radius:var(--radius)}
