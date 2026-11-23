@@ -142,7 +142,7 @@ function boot() {
   }));
 
   /* ---------- Hero ---------- */
-  if ($("#heroArt")) $("#heroArt").innerHTML = PRODUCTS.slice(0, 3).map(art).join("");
+  if ($("#heroArt")) $("#heroArt").innerHTML = '<img src="assets/hero.jpg" alt="The Amanah Health Products range: Overnight Breakfast Muesli, Detox Powder, Joint Support Oil, Bowel Ease Concept and TGF Powder" width="1600" height="900" />';
 
   /* ---------- Drawer ---------- */
   const drawer = $("#drawer"), overlay = $("#overlay");
