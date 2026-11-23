@@ -1,6 +1,6 @@
 # amanah
 
-Four independent storefront designs for **Amanah Health Products** (Dr Ali's range) — demo
+Four independent storefront designs for **Amanah Health Products** (Dr Ali's range), demo
 stores, no real orders are taken.
 
 ```

@@ -1,4 +1,4 @@
-/* still. — base store styles (tokens, cart drawer, product popup, checkout) */
+/* still., base store styles (tokens, cart drawer, product popup, checkout) */
 :root {
   --bg: #f9f5f0;              /* very light walnut */
   --surface: var(--bg);       /* drawer / modal */
@@ -65,7 +65,7 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: var(--head-weight); mar
 .hero__media svg { width: 30%; height: auto; }
 .hero__media svg:nth-child(2) { width: 36%; }
 
-/* Sections — off-screen sections skip layout/paint until they're near the viewport */
+/* Sections, off-screen sections skip layout/paint until they're near the viewport */
 .section { padding: 96px 0; content-visibility: auto; contain-intrinsic-size: auto 700px; }
 .section--line { border-top: 1px solid var(--line); }
 .section h2 { font-size: 1.6rem; }
@@ -80,7 +80,7 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: var(--head-weight); mar
 .about-co ul { list-style: none; margin: 0; padding: 0; color: var(--muted); }
 .about-co li { padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; }
 .about-co li:first-child { padding-top: 0; }
-.about-co li::before { content: "—"; color: var(--hl); }
+.about-co li::before { content: "·"; color: var(--hl); }
 
 /* Shop */
 .shop__head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; margin-bottom: 36px; }
@@ -91,7 +91,7 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: var(--head-weight); mar
 
 .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 16px; }
 .card { position: relative; cursor: pointer; }
-/* Glow lives on its own layer and only fades its opacity — cheap for the GPU */
+/* Glow lives on its own layer and only fades its opacity, cheap for the GPU */
 .card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; aspect-ratio: 1 / 1.15; border-radius: var(--radius); box-shadow: var(--glow); opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 1; }
 .card:hover::before { opacity: 1; }
 .card__media { position: relative; aspect-ratio: 1 / 1.15; border-radius: var(--radius); background: var(--tile); display: grid; place-items: center; overflow: hidden; contain: paint; }
@@ -246,7 +246,7 @@ body.is-scrolling .grid, body.is-scrolling .hero { pointer-events: none; }
 }
 
 /* ==================== Gallery · Mughal garden layout ==================== */
-/* min3 — Gallery · Blush & Forest (semi-minimal) */
+/* min3, Gallery · Blush & Forest (semi-minimal) */
 :root { --bg: #fbf8f5; --surface: #fbf8f5; --tile: #f3e0d9; --text: #22362a; --muted: #66776b; --line: rgba(34, 54, 42, 0.13);
   --accent: #2f4b3a; --hl: #c9a24b; --hl-2: #dfbe74; --hl-rgb: 201 162 75; --on-hl: #22362a; --overlay: rgb(34 54 42 / 0.35);
   --radius: 32px; --font-body: "Jost", system-ui, sans-serif; --font-head: "Cormorant Garamond", Georgia, serif;
@@ -314,7 +314,7 @@ body.is-scrolling .ga-track { pointer-events: none; }
   .ga-sec { padding: 72px 0; }
 }
 
-/* min3 — Royal Mughal garden apothecary: ivory marble, garden sage, soft gold, carved-flower botanicals.
+/* min3, Royal Mughal garden apothecary: ivory marble, garden sage, soft gold, carved-flower botanicals.
     */
 :root {
   --bg: #fbfaf4; --surface: #fbfaf4; --tile: #eef1e4; --text: #233a2d; --muted: #66776b; --line: rgba(35, 58, 45, 0.13);

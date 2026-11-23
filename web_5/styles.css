@@ -1,4 +1,4 @@
-/* still. — base store styles (tokens, cart drawer, product popup, checkout) */
+/* still., base store styles (tokens, cart drawer, product popup, checkout) */
 :root {
   --bg: #f9f5f0;              /* very light walnut */
   --surface: var(--bg);       /* drawer / modal */
@@ -65,7 +65,7 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: var(--head-weight); mar
 .hero__media svg { width: 30%; height: auto; }
 .hero__media svg:nth-child(2) { width: 36%; }
 
-/* Sections — off-screen sections skip layout/paint until they're near the viewport */
+/* Sections, off-screen sections skip layout/paint until they're near the viewport */
 .section { padding: 96px 0; content-visibility: auto; contain-intrinsic-size: auto 700px; }
 .section--line { border-top: 1px solid var(--line); }
 .section h2 { font-size: 1.6rem; }
@@ -80,7 +80,7 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: var(--head-weight); mar
 .about-co ul { list-style: none; margin: 0; padding: 0; color: var(--muted); }
 .about-co li { padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; }
 .about-co li:first-child { padding-top: 0; }
-.about-co li::before { content: "—"; color: var(--hl); }
+.about-co li::before { content: "·"; color: var(--hl); }
 
 /* Shop */
 .shop__head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; margin-bottom: 36px; }
@@ -91,7 +91,7 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: var(--head-weight); mar
 
 .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 16px; }
 .card { position: relative; cursor: pointer; }
-/* Glow lives on its own layer and only fades its opacity — cheap for the GPU */
+/* Glow lives on its own layer and only fades its opacity, cheap for the GPU */
 .card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; aspect-ratio: 1 / 1.15; border-radius: var(--radius); box-shadow: var(--glow); opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 1; }
 .card:hover::before { opacity: 1; }
 .card__media { position: relative; aspect-ratio: 1 / 1.15; border-radius: var(--radius); background: var(--tile); display: grid; place-items: center; overflow: hidden; contain: paint; }
@@ -246,7 +246,7 @@ body.is-scrolling .grid, body.is-scrolling .hero { pointer-events: none; }
 }
 
 /* ==================== Bento layout ==================== */
-/* min5 — Bento · Pastel multi-colour (semi-minimal) */
+/* min5, Bento · Pastel multi-colour (semi-minimal) */
 :root { --bg: #f4f1ec; --surface: #fdfbf7; --tile: #dfe8d8; --text: #2d2a32; --muted: #6c6774; --line: rgba(45, 42, 50, 0.12);
   --accent: #6b5b8c; --hl: #8e6cc2; --hl-2: #a98bd6; --hl-rgb: 142 108 194; --on-hl: #ffffff; --overlay: rgb(45 42 50 / 0.35);
   --radius: 28px; --font-body: "Plus Jakarta Sans", system-ui, sans-serif; --head-weight: 500; --h1-spacing: -0.045em;

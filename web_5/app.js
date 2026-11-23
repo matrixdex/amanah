@@ -1,4 +1,4 @@
-/* Amanah Health Products — Bento (web_5) storefront logic.
+/* Amanah Health Products, Bento (web_5) storefront logic.
    Products come from products.json (the product database); their images live in assets/products/.
    products.json is loaded with fetch(), so open the site through a web server (not file://). */
 
@@ -100,7 +100,7 @@ function boot() {
     renderGrid();
   });
 
-  /* Product markup — designs can pick a layout via STORE_THEME.layout: "grid" (default), "list" or "table" */
+  /* Product markup, designs can pick a layout via STORE_THEME.layout: "grid" (default), "list" or "table" */
   function cardHTML(p, i) {
     const num = String(i + 1).padStart(2, "0");
     if (THEME.layout === "list") return `
@@ -339,7 +339,7 @@ function boot() {
       host.innerHTML = '<div class="pp-missing"><h1>Product not found</h1><a class="btn" href="shop.html">Shop all</a></div>';
       return;
     }
-    document.title = `${p.name} — Amanah Health Products`;
+    document.title = `${p.name} | Amanah Health Products`;
     const md = document.querySelector('meta[name="description"]'); if (md) md.content = `${p.name}: ${p.desc}`.slice(0, 200);
     const ld = document.createElement("script"); ld.type = "application/ld+json";
     ld.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "Product", name: p.name, description: p.desc, image: new URL(p.image, location.href).href, brand: { "@type": "Brand", name: "Amanah Health Products" },
