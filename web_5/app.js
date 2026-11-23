@@ -336,7 +336,7 @@ function boot() {
     const host = $("#product"); if (!host) return;
     const p = byId(new URLSearchParams(location.search).get("id"));
     if (!p) {
-      host.innerHTML = '<div class="pp-missing"><h1>Product not found</h1><a class="btn" href="shop.html">Shop all</a></div>';
+      host.innerHTML = '<div class="pp-missing"><h1>Product not found</h1><a class="btn" href="shop.html">Shop All</a></div>';
       return;
     }
     document.title = `${p.name} - Amanah Health Products`;
