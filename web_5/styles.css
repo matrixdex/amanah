@@ -605,3 +605,7 @@ body, body * { font-size: var(--fs-body) !important; }
 .be-grid .card__info, .pp-more .be-grid .card__info { flex-direction: row !important; justify-content: space-between; align-items: flex-start; gap: 12px; }
 .be-grid .card__info h3 { margin: 0; line-height: 1.35; }
 .be-grid .card__price { margin: 0 !important; line-height: 1.35; white-space: nowrap; text-align: right; flex: none; }
+
+/* cart count badge: perfectly centred number */
+.be-bag { display: inline-flex; align-items: center; justify-content: center; gap: 8px; line-height: 1; padding: 8px 8px 8px 16px; }
+.be-bag span { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-width: 24px; width: auto; height: 24px; margin: 0; padding: 0 7px 1.5px; border-radius: 12px; line-height: 1; font-variant-numeric: tabular-nums; }
