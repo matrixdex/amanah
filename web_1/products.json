@@ -130,6 +130,62 @@
           "text": "A natural blend by the renowned physician Hakeem Abdul Hameed, first formulated in the 1920s."
         }
       ]
+    },
+    {
+      "id": "detox-powder",
+      "name": "Detox Powder",
+      "subtitle": "Traditional detox tea · powder",
+      "category": "digestive",
+      "price": 45.0,
+      "size": "Powder",
+      "description": "A blend of time-tested traditional ingredients, made into a detox tea for detoxification and gut health.",
+      "ingredients": "Kadu (Swertia chirayata), Kariatu (Enicostemma littorale), Neem (Azadirachta indica), Amla (Emblica officinalis).",
+      "directions": "Soak half a teaspoon in a cup of hot water and leave overnight. Strain the tea and drink on an empty stomach in the morning.",
+      "warnings": "Consult your healthcare provider before use, particularly if you are pregnant, breastfeeding, or managing a medical condition. Do not exceed the recommended daily dose. If symptoms persist, discontinue use and seek medical advice.",
+      "storage": "Store in a cool & dry place.",
+      "image": "assets/products/detox-powder.jpg",
+      "imageAlt": "Amanah Health Products Dr Ali's Detox Powder pouch",
+      "available": true,
+      "benefits": [
+        {
+          "title": "Supports detoxification",
+          "text": "A blend of time-tested traditional ingredients made into a detox tea."
+        },
+        {
+          "title": "Supports gut health",
+          "text": "Kadu, Kariatu, Neem and Amla, taken as an overnight-soaked tea."
+        },
+        {
+          "title": "A gentle morning ritual",
+          "text": "Soak overnight, strain, and drink on an empty stomach in the morning."
+        }
+      ]
+    },
+    {
+      "id": "tgf-powder",
+      "name": "TGF Powder",
+      "subtitle": "New & improved formula · 200g",
+      "category": "nutrition",
+      "price": 30.0,
+      "size": "200g",
+      "description": "Dr Ali's TGF Powder, now in a new and improved formula.",
+      "ingredients": null,
+      "directions": null,
+      "warnings": "Consult your healthcare provider before use, particularly if you are pregnant, breastfeeding, or managing a medical condition. Do not exceed the recommended daily dose. If symptoms persist, discontinue use and seek medical advice.",
+      "storage": "Store in a cool & dry place.",
+      "image": "assets/products/tgf-powder.jpg",
+      "imageAlt": "Amanah Health Products Dr Ali's TGF Powder pouch",
+      "available": true,
+      "benefits": [
+        {
+          "title": "New & improved formula",
+          "text": "Dr Ali's TGF Powder in its updated formula."
+        },
+        {
+          "title": "200g pack",
+          "text": "Net weight 200g."
+        }
+      ]
     }
   ]
 }

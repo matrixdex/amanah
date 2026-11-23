@@ -549,3 +549,4 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .shop-all-note { display: none; }
 @media (max-width: 760px) { .ga-track--all { grid-template-columns: minmax(0, 1fr); } .ga-circle { gap: 10px; } }
 .pdp--page .pdp__media { border-radius: 240px 240px 12px 12px; }
+.ga-track--all { grid-auto-flow: row !important; grid-auto-columns: auto !important; justify-content: stretch !important; scroll-snap-type: none; }
