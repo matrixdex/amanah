@@ -593,3 +593,6 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
   .ga-circle { width: min(1040px, 100%, calc((100svh - 250px) * 16 / 9)); margin-bottom: 36px; }
   .ga-circle img { aspect-ratio: 16 / 9; }
 }
+
+/* hero title: no italics */
+.ga-hero h1 em { font-style: normal; }
