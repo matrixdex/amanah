@@ -478,3 +478,10 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .pp-more .sw-table { border-top: 1px solid var(--line); }
 .pdp--page .pdp__media { border: 1px solid var(--line); }
 @media (min-width: 641px) { .sw-table::after { content: ""; background: var(--bg); } }
+
+/* hero call to action */
+.sw-hero__text { justify-content: flex-end; gap: 32px; }
+.sw-hero__text .sw-label { display: none; }
+.sw-cta { align-self: flex-start; display: inline-flex; padding: 15px 28px; border: 1px solid var(--text); background: var(--text); color: var(--bg); font-family: var(--font-mono, "JetBrains Mono", ui-monospace, monospace); font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.25s, color 0.25s; }
+.sw-cta:hover { background: transparent; color: var(--text); }
+@media (max-width: 760px) { .sw-cta { align-self: center; } }
