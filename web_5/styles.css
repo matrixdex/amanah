@@ -580,6 +580,23 @@ h1, h2, h3 { text-wrap: balance; font-optical-sizing: auto; }
 .be-grid { grid-auto-rows: 1fr; }
 
 /* homepage Shop title: centred, equal space above and below */
-#shop.be-sec { padding-block: 0; }
-#shop .be-head { justify-content: center; text-align: center; margin: 0; padding: 48px 0; }
-@media (max-width: 640px) { #shop .be-head { padding: 36px 0; } }
+#products.be-sec { padding-block: 0; }
+#products .be-head { justify-content: center; text-align: center; margin: 0; padding: 48px 0; }
+@media (max-width: 640px) { #products .be-head { padding: 36px 0; } }
+
+/* ===== Type scale: four font sizes only (body, large body, title, hero) ===== */
+:root { --fs-body: 16px; --fs-large: 24px; --fs-title: 36px; --fs-hero: 56px; }
+@media (max-width: 640px) { :root { --fs-large: 22px; --fs-title: 30px; --fs-hero: 40px; } }
+body, body * { font-size: var(--fs-body) !important; }
+/* large body: sub-headings and prices */
+.benefits h2, .checkout h2, .confirm h2, .pdp__price, .menu__logo { font-size: var(--fs-large) !important; }
+/* title: section and page titles */
+.be-head :is(h1, h2), .be-box h2, .be-about__main h2, .pp-more h2, .pdp__info h1, .pp-missing h1 { font-size: var(--fs-title) !important; }
+/* hero: hero headline and menu links */
+.be-box--hero h1, .menu__links a { font-size: var(--fs-hero) !important; }
+
+/* homepage Products: 3 cards on widescreen, 1 on mobile, then Shop All */
+#products .be-grid .card:nth-child(n+4) { display: none; }
+@media (max-width: 640px) { #products .be-grid .card:nth-child(n+2) { display: none; } }
+.be-more { display: flex; justify-content: center; padding: 32px 0 8px; }
+.be-more .be-btn { align-self: center; }
