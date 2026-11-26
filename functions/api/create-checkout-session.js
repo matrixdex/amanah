@@ -3,32 +3,42 @@
 // Keys come from environment variables; see STRIPE_INTEGRATION_TODO.md.
 import Stripe from "stripe";
 
-// Stripe Price ID for each product id in products.json.
-// TODO: replace each "price_..." with the real Price ID from the Stripe Dashboard.
-const PRICE_IDS = {
-  "overnight-breakfast-muesli": "price_...",
-  "joint-support-oil": "price_...",
-  "bowel-ease-concept": "price_...",
-  "detox-powder": "price_...",
-  "tgf-powder": "price_...",
-};
-
 export async function onRequestPost({ request, env }) {
   const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
     apiVersion: "2026-03-25.dahlia",
     httpClient: Stripe.createFetchHttpClient(),
   });
 
+  // Product names and prices come from the site's own products.json, read here on the server.
   // The cart sends product ids and quantities only; prices are never taken from the browser.
+  let db;
+  try {
+    const res = await env.ASSETS.fetch(new URL("/products.json", request.url));
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    db = await res.json();
+  } catch (err) {
+    console.error("products.json could not be read:", err.message);
+    return Response.json({ error: "Checkout could not be started. Please try again." }, { status: 500 });
+  }
+  const products = Object.fromEntries((db.products || []).filter((p) => p.available !== false).map((p) => [p.id, p]));
+  const currency = String(db.currency || "GBP").toLowerCase();
+  const origin = new URL(request.url).origin;
+
   let body = {};
   try { body = await request.json(); } catch (e) {}
   const quantities = {};
   for (const item of Array.isArray(body.items) ? body.items : []) {
-    if (!item || !PRICE_IDS[item.id]) continue;
+    if (!item || !products[item.id]) continue;
     const q = Math.max(1, Math.min(20, parseInt(item.quantity, 10) || 1));
     quantities[item.id] = Math.min(20, (quantities[item.id] || 0) + q);
   }
-  const line_items = Object.entries(quantities).map(([id, quantity]) => ({ price: PRICE_IDS[id], quantity }));
+  const line_items = Object.entries(quantities).map(([id, quantity]) => {
+    const p = products[id];
+    const product_data = { name: p.name };
+    if (p.subtitle) product_data.description = p.subtitle;
+    if (origin.startsWith("https://") && p.image) product_data.images = [new URL(p.image, origin + "/").href];
+    return { price_data: { currency, unit_amount: Math.round(Number(p.price) * 100), product_data }, quantity };
+  });
   if (!line_items.length) return Response.json({ error: "Your cart is empty." }, { status: 400 });
 
   // TODO: Set mode to "subscription" if selling recurring products.
