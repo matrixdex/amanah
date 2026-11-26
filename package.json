@@ -1,0 +1,9 @@
+{
+  "name": "amanah-health-products",
+  "private": true,
+  "type": "module",
+  "description": "Amanah Health Products storefronts with Stripe checkout (Cloudflare Pages Functions in /functions).",
+  "dependencies": {
+    "stripe": "^23.2.0"
+  }
+}

@@ -610,3 +610,8 @@ body, body * { font-size: var(--fs-body) !important; }
 .be-bag { display: inline-flex; align-items: center; justify-content: center; gap: 8px; line-height: 1; padding: 8px 8px 8px 16px; }
 .be-bag span { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-width: 24px; width: auto; height: 24px; margin: 0; padding: 0 7px 1.5px; border-radius: 12px; line-height: 1; font-variant-numeric: tabular-nums; }
 .be-bag span, .be-bag [data-cart-count] { font-family: inherit; font-weight: inherit; font-variant-numeric: normal !important; font-feature-settings: normal; letter-spacing: 0; }
+
+/* Stripe embedded payment form */
+.checkout__pay { min-width: 0; }
+.checkout__form { min-height: 120px; margin-top: 20px; }
+.checkout__loading { color: var(--muted); }

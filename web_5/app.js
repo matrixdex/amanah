@@ -258,45 +258,71 @@ function boot() {
 
   function openProduct(id) { location.href = "product.html?id=" + encodeURIComponent(id); }
 
-  function openCheckout() {
+  /* ---------- Checkout: Stripe embedded payment form ---------- */
+  const STRIPE_APPEARANCE = {
+    theme: "flat",
+    labels: "auto",
+    inputs: "condensed",
+    variables: {
+      borderRadius: "4px",
+      colorBackground: "#ffffff",
+      colorDanger: "#df1b41",
+      colorPrimary: "#0570de",
+      colorSuccess: "#00c853",
+      colorText: "#30313d",
+      fontFamily: "default",
+      fontSizeBase: "16px",
+      spacingUnit: "4px"
+    }
+  };
+  async function openCheckout() {
     const items = cartItems(); if (!items.length) return;
-    const sub = subtotal(), ship = sub >= FREE_SHIP ? 0 : SHIPPING;
+    const sub = subtotal();
     openModal(`
       <div class="checkout">
-        <form id="coForm" novalidate>
+        <div class="checkout__pay">
           <h2>Checkout</h2>
-          <div class="field-row">
-            <label class="field">First name<input name="first" required autocomplete="given-name" /></label>
-            <label class="field">Last name<input name="last" required autocomplete="family-name" /></label>
-          </div>
-          <label class="field">Email<input name="email" type="email" required autocomplete="email" /></label>
-          <label class="field">Address<input name="address" required autocomplete="street-address" /></label>
-          <div class="field-row">
-            <label class="field">City<input name="city" required autocomplete="address-level2" /></label>
-            <label class="field">Postal code<input name="zip" required autocomplete="postal-code" /></label>
-          </div>
+          <div id="checkout-form" class="checkout__form"><p class="checkout__loading">Loading secure payment form…</p></div>
           <p class="form-error" id="coError" role="alert"></p>
-          <button class="btn" type="submit">Place order</button>
-        </form>
+        </div>
         <aside class="summary">
           <h3>Summary</h3>
           ${items.map(({ p, q }) => `<div class="summary__line"><span>${esc(p.name)} × ${q}</span><span>${fmt(p.price * q)}</span></div>`).join("")}
-          <div class="summary__line"><span>Shipping</span><span>${ship ? fmt(ship) : "Free"}</span></div>
-          <div class="summary__line summary__total"><span>Total</span><span>${fmt(sub + ship)}</span></div>
+          <div class="summary__line summary__total"><span>Total</span><span>${fmt(sub)}</span></div>
         </aside>
       </div>`);
-    $("#coForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const form = e.target;
-      let ok = true;
-      $$("input", form).forEach((i) => { const v = i.checkValidity() && i.value.trim(); i.classList.toggle("invalid", !v); if (!v) ok = false; });
-      if (!ok) { $("#coError").textContent = "Please complete every field."; return; }
-      const order = "AH-" + Math.floor(10000 + Math.random() * 90000);
-      const name = form.first.value.trim();
-      cart = {}; saveCart(); renderCart();
-      modalContent.innerHTML = `<div class="confirm"><h2>Thank you, ${esc(name)}.</h2><p>Your order ${order} has been received.</p><button class="btn" id="confirmDone">Continue</button></div>`;
-      $("#confirmDone").addEventListener("click", closeModal);
-    });
+    const showError = (msg) => { const e = $("#coError"); if (e) e.textContent = msg; const l = $(".checkout__loading"); if (l) l.remove(); };
+    if (typeof Stripe !== "function") { showError("The payment form could not load. Please check your connection and try again."); return; }
+    try {
+      const res = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: items.map(({ p, q }) => ({ id: p.id, quantity: q })) })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.client_secret || !data.publishable_key) throw new Error(data.error || "Checkout could not be started. Please try again.");
+      const stripe = Stripe(data.publishable_key);
+      const checkout = stripe.initCheckoutFormSdk({ clientSecret: Promise.resolve(data.client_secret), appearance: STRIPE_APPEARANCE });
+      if (!$("#checkout-form")) return;                       /* the checkout was closed while loading */
+      $("#checkout-form").innerHTML = "";
+      const form = checkout.createForm({ layout: "expanded" });
+      form.mount("#checkout-form");
+      const loadActionsResult = await checkout.loadActions();
+      if (loadActionsResult.type !== "success") throw new Error("Checkout could not be started. Please try again.");
+      form.on("confirm", async (event) => {
+        try {
+          const result = await loadActionsResult.actions.confirm({ formConfirmEvent: event });
+          if (result && result.type === "error") { showError(result.error.message); return; }
+          cart = {}; saveCart(); renderCart();
+          modalContent.innerHTML = `<div class="confirm"><h2>Thank you.</h2><p>Your order has been received. A receipt is on its way to your email.</p><button class="btn" id="confirmDone">Continue</button></div>`;
+          $("#confirmDone").addEventListener("click", closeModal);
+        } catch (error) {
+          console.error("Payment confirmation error:", error);
+        }
+      });
+    } catch (err) {
+      showError(err.message);
+    }
   }
 
   /* ---------- Toast, nav, newsletter ---------- */
