@@ -244,6 +244,7 @@ function boot() {
     $(".modal__close").focus();
   }
   function closeModal() {
+    $(".modal__panel").classList.remove("is-confirm");
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     if (!drawer.classList.contains("is-open")) document.body.classList.remove("lock");
@@ -278,7 +279,8 @@ function boot() {
   };
   function orderComplete() {
     cart = {}; saveCart(); renderCart();
-    openModal(`<div class="confirm"><h2>Thank you.</h2><p>Your order has been received. A receipt is on its way to your email.</p><button class="btn" id="confirmDone">Continue</button></div>`);
+    openModal(`<div class="confirm"><h2>Thank you.</h2><p>Your order has been received. A receipt is on its way to your email.</p><button class="btn" id="confirmDone">Close</button></div>`);
+    $(".modal__panel").classList.add("is-confirm");     /* one Close button only: hide the corner one */
     $("#confirmDone").addEventListener("click", closeModal);
   }
   /* Back from a payment method that redirected: check the session's status before confirming the order. */
