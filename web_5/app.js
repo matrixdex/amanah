@@ -209,7 +209,7 @@ function boot() {
     $$("[data-cart-count]").forEach((el) => (el.textContent = items.reduce((s, i) => s + i.q, 0)));
     $("#subtotal").textContent = fmt(sub);
     $("#checkoutBtn").disabled = !items.length;
-    $("#shipText").textContent = FREE_SHIP == null ? `Shipping & Delivery: ${fmt(SHIPPING)} flat per order.`
+    $("#shipText").textContent = FREE_SHIP == null ? `Shipping & Delivery: ${fmt(SHIPPING)}`
       : !items.length ? `Free shipping over ${fmt(FREE_SHIP)}.`
       : FREE_SHIP - sub > 0 ? `${fmt(FREE_SHIP - sub)} until free shipping.` : "Free shipping applied.";
     $("#cartBody").innerHTML = items.length ? items.map(({ p, q }) => `
