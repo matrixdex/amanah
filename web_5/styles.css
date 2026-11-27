@@ -691,3 +691,39 @@ body, body * { font-size: var(--fs-body) !important; }
 /* type scale for the new pages (stays within the four sizes) */
 .doc h2, .contact-card h2, .bp__body h2 { font-size: var(--fs-large) !important; }
 @media (max-width: 760px) { .bp__sub { text-align: center; } .bp__link { align-self: center; } }
+
+/* ===== Information pages and benefit lists: plain, ruled layout (no rounded panels or bubbles).
+   The homepage keeps its bento boxes. ===== */
+
+/* text pages: content sits on the page, sections divided by hairlines */
+.be-box.doc { background: transparent; border-radius: 0; padding: 0; max-width: 760px; box-shadow: none; }
+.doc h2 { margin: 0; padding: 28px 0 10px; border-top: 1px solid var(--line); }
+.doc h2:first-child, .doc .doc__lead + h2, .doc .doc__updated + h2 { padding-top: 28px; }
+.doc > :last-child { margin-bottom: 0; }
+.doc__updated { padding-bottom: 4px; }
+.doc__lead { background: transparent; border-radius: 0; border-left: 2px solid var(--accent); padding: 2px 0 2px 18px; margin: 0 0 32px; }
+.doc .faq__list details:first-child { border-top: 1px solid var(--line); }
+
+/* contact: two plain columns */
+.contact-grid { gap: 32px; }
+.contact-card { background: transparent !important; border-radius: 0; padding: 20px 0 0; border-top: 1px solid var(--line); }
+.contact-card h2 { padding: 0; border: 0; }
+
+/* health benefits (product pages and the Health Benefits page): ruled list, no bubbles */
+.benefits li { background: transparent; border-radius: 0; margin: 0; padding: 14px 0; border-top: 1px solid var(--line); }
+.benefits li:last-child { border-bottom: 1px solid var(--line); }
+
+/* Health Benefits page: one product per row, separated by hairlines, square images */
+.bp-list { gap: 0; }
+.bp { background: transparent; border-radius: 0; overflow: visible; gap: 40px; padding: 40px 0; border-top: 1px solid var(--line); }
+.bp:first-child { border-top: 0; padding-top: 8px; }
+.bp__media { background: none; align-self: start; }
+.bp__media img { height: auto; border-radius: 0; }
+.bp__body { padding: 0; }
+@media (max-width: 760px) {
+  .bp { gap: 20px; padding: 32px 0; }
+  .contact-grid { gap: 24px; }
+}
+.benefits li:last-child { border-top: 1px solid var(--line); }
+.doc .contact-card h2 { padding: 0; margin: 0 0 8px; border: 0; }
+@media (max-width: 760px) { .contact-card { text-align: center; } }
