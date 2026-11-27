@@ -634,18 +634,6 @@ body, body * { font-size: var(--fs-body) !important; }
 /* thank-you pop-up: only its own Close button */
 .modal__panel.is-confirm .modal__close { display: none; }
 
-/* ===== Footer: link columns in a bento box, copyright line below ===== */
-.be-foot { flex-direction: column; align-items: stretch; gap: 28px; padding: 40px 0 48px; }
-.foot-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; background: #fff; border-radius: var(--radius); padding: 36px 40px; text-align: left; }
-.foot-col { display: flex; flex-direction: column; gap: 10px; }
-.foot-col h3 { margin: 0 0 4px; font-weight: 600; color: var(--text); letter-spacing: 0; }
-.foot-col a { color: var(--muted); transition: color 0.2s; }
-.foot-col a:hover { color: var(--text); }
-.be-foot .foot-brand { align-self: center; }
-@media (max-width: 760px) {
-  .foot-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 28px 24px; row-gap: 28px; }
-}
-
 /* ===== Information and legal pages ===== */
 .doc-page { padding-bottom: 8px; }
 .doc-head { flex-direction: column; align-items: center; text-align: center; gap: 10px; padding: 48px 0 32px; }
@@ -728,17 +716,34 @@ body, body * { font-size: var(--fs-body) !important; }
 .doc .contact-card h2 { padding: 0; margin: 0 0 8px; border: 0; }
 @media (max-width: 760px) { .contact-card { text-align: center; } }
 
-/* ===== Footer: square, ruled layout (no rounded box) ===== */
-.be-foot { gap: 0; padding: 56px 0 40px; margin-top: 40px; border-top: 1px solid var(--line); }
-.foot-cols { background: transparent; border-radius: 0; padding: 0 0 40px; gap: 32px; }
-.foot-col h3 { margin-bottom: 6px; }
-.be-foot .foot-brand { align-self: stretch; justify-content: center; padding-top: 28px; border-top: 1px solid var(--line); }
-@media (max-width: 760px) {
-  .be-foot { padding: 40px 0 32px; margin-top: 24px; }
-  .foot-cols { padding: 0 0 32px; row-gap: 28px; }
-  .be-foot .foot-brand { padding-top: 24px; }
-}
 
-/* footer: narrower and centred */
-.be-foot { max-width: 880px; }
-.foot-col { align-items: center; text-align: center; }
+/* ===== Footer: full-width dark band in the site's charcoal and teal, square edges ===== */
+.be-foot { display: block; max-width: none; width: 100%; margin: 72px 0 0; padding: 0; border: 0; background: var(--text); color: rgb(255 255 255 / 0.72); text-align: left; }
+.foot-inner { padding: 64px 0 36px; }
+.foot-top { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 3fr); gap: 48px; padding-bottom: 48px; }
+.foot-id { display: inline-flex; color: #fff; font-weight: 600; letter-spacing: -0.03em; }
+.foot-tag { margin: 10px 0 0; max-width: 26ch; line-height: 1.6; }
+.foot-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; background: none; border-radius: 0; padding: 0; text-align: left; }
+.foot-col { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; text-align: left; }
+.foot-col h3 { margin: 0 0 6px; color: #fff; font-weight: 600; letter-spacing: 0; }
+.foot-col a { color: rgb(255 255 255 / 0.72); transition: color 0.2s; }
+.foot-col a:hover, .foot-id:hover { color: #fff; }
+.foot-col a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.foot-bottom { display: flex; justify-content: center; padding-top: 28px; border-top: 1px solid rgb(255 255 255 / 0.14); }
+.be-foot .foot-brand { display: inline-flex; align-items: center; gap: 14px; padding: 0; border: 0; color: rgb(255 255 255 / 0.72); }
+.be-foot .foot-logo { width: 44px; height: 44px; }
+.be-foot a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@media (max-width: 900px) {
+  .foot-top { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .foot-brandblock { text-align: center; }
+  .foot-tag { margin-inline: auto; }
+  .foot-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+  .foot-col { align-items: center; text-align: center; }
+}
+@media (max-width: 760px) {
+  .be-foot { margin-top: 48px; }
+  .foot-inner { padding: 48px 0 28px; }
+  .foot-top { padding-bottom: 36px; }
+  .be-foot .foot-brand { flex-direction: column; text-align: center; gap: 10px; }
+}
+.foot-id { font-size: var(--fs-large) !important; }
