@@ -747,3 +747,7 @@ body, body * { font-size: var(--fs-body) !important; }
   .be-foot .foot-brand { flex-direction: column; text-align: center; gap: 10px; }
 }
 .foot-id { font-size: var(--fs-large) !important; }
+/* footer logo sits with the wordmark in the brand block */
+.foot-id { align-items: center; gap: 12px; }
+.be-foot .foot-id .foot-logo { width: 48px; height: 48px; flex: none; }
+@media (max-width: 900px) { .foot-id { justify-content: center; } }
