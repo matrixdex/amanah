@@ -738,3 +738,7 @@ body, body * { font-size: var(--fs-body) !important; }
   .foot-cols { padding: 0 0 32px; row-gap: 28px; }
   .be-foot .foot-brand { padding-top: 24px; }
 }
+
+/* footer: narrower and centred */
+.be-foot { max-width: 880px; }
+.foot-col { align-items: center; text-align: center; }
