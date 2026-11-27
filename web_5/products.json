@@ -8,8 +8,10 @@
   },
   "currency": "GBP",
   "currencySymbol": "£",
-  "freeShippingOver": 60,
-  "shippingFlat": 5,
+  "shippingFlat": 10,
+  "shipsTo": [
+    "GB"
+  ],
   "categories": [
     {
       "id": "nutrition",

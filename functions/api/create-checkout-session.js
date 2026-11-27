@@ -26,6 +26,8 @@ export async function onRequestPost({ request, env }) {
   }
   const products = Object.fromEntries((db.products || []).filter((p) => p.available !== false).map((p) => [p.id, p]));
   const currency = String(db.currency || "GBP").toLowerCase();
+  const shippingPence = Math.round(Number(db.shippingFlat ?? 10) * 100);
+  const shipsTo = Array.isArray(db.shipsTo) && db.shipsTo.length ? db.shipsTo : ["GB"];
   const origin = new URL(request.url).origin;
 
   let body = {};
@@ -57,6 +59,15 @@ export async function onRequestPost({ request, env }) {
     automatic_tax: { enabled: false },
     submit_type: "auto",
     integration_identifier: "custom_embedded_web_0001",
+    // Delivery: address collected in the form; countries and flat rate come from products.json.
+    shipping_address_collection: { allowed_countries: shipsTo },
+    shipping_options: [{
+      shipping_rate_data: {
+        type: "fixed_amount",
+        display_name: "UK delivery",
+        fixed_amount: { amount: shippingPence, currency },
+      },
+    }],
     // Where Stripe sends the customer back after a payment method that needs a redirect.
     return_url: `${origin}/?checkout=complete&session_id={CHECKOUT_SESSION_ID}`,
   };

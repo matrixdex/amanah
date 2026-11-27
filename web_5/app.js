@@ -8,7 +8,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-let PRODUCTS = [], CATS = { all: "All" }, FREE_SHIP = 60, SHIPPING = 5, CURRENCY = "£";
+let PRODUCTS = [], CATS = { all: "All" }, FREE_SHIP = null, SHIPPING = 10, CURRENCY = "£";
 const CART_KEY = "amanah-cart";
 const fmt = (n) => CURRENCY + n.toFixed(2);
 const byId = (id) => PRODUCTS.find((p) => p.id === id);
@@ -209,9 +209,9 @@ function boot() {
     $$("[data-cart-count]").forEach((el) => (el.textContent = items.reduce((s, i) => s + i.q, 0)));
     $("#subtotal").textContent = fmt(sub);
     $("#checkoutBtn").disabled = !items.length;
-    const left = FREE_SHIP - sub;
-    $("#shipText").textContent = !items.length ? `Free shipping over ${fmt(FREE_SHIP)}.`
-      : left > 0 ? `${fmt(left)} until free shipping.` : "Free shipping applied.";
+    $("#shipText").textContent = FREE_SHIP == null ? `UK delivery: ${fmt(SHIPPING)} flat per order.`
+      : !items.length ? `Free shipping over ${fmt(FREE_SHIP)}.`
+      : FREE_SHIP - sub > 0 ? `${fmt(FREE_SHIP - sub)} until free shipping.` : "Free shipping applied.";
     $("#cartBody").innerHTML = items.length ? items.map(({ p, q }) => `
       <div class="line" data-id="${p.id}">
         <div class="line__img">${art(p)}</div>
@@ -306,7 +306,8 @@ function boot() {
         <aside class="summary">
           <h3>Summary</h3>
           ${items.map(({ p, q }) => `<div class="summary__line"><span>${esc(p.name)} × ${q}</span><span>${fmt(p.price * q)}</span></div>`).join("")}
-          <div class="summary__line summary__total"><span>Total</span><span>${fmt(sub)}</span></div>
+          <div class="summary__line"><span>UK delivery</span><span>${fmt(SHIPPING)}</span></div>
+          <div class="summary__line summary__total"><span>Total</span><span>${fmt(sub + SHIPPING)}</span></div>
         </aside>
       </div>`);
     const showError = (msg) => { const e = $("#coError"); if (e) e.textContent = msg; const l = $(".checkout__loading"); if (l) l.remove(); };
@@ -426,7 +427,7 @@ fetch("products.json")
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then((db) => {
     CURRENCY = db.currencySymbol || "£";
-    FREE_SHIP = db.freeShippingOver ?? FREE_SHIP;
+    FREE_SHIP = db.freeShippingOver ?? null;
     SHIPPING = db.shippingFlat ?? SHIPPING;
     db.categories.forEach((c) => { CATS[c.id] = c.name; });
     PRODUCTS = db.products.map((p) => ({ ...p, sub: p.subtitle, cat: p.category, desc: p.description }));
