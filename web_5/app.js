@@ -207,15 +207,16 @@ function boot() {
   function renderCart() {
     const items = cartItems(), sub = subtotal();
     $$("[data-cart-count]").forEach((el) => (el.textContent = items.reduce((s, i) => s + i.q, 0)));
-    $("#subtotal").textContent = fmt(sub);
+    /* Shipping & Delivery sits on its own row above the subtotal, and the subtotal includes it. */
+    const ship = !items.length ? 0 : (FREE_SHIP != null && sub >= FREE_SHIP ? 0 : SHIPPING);
+    $("#shipRow").hidden = !items.length;
+    $("#shipText").textContent = ship ? fmt(ship) : "Free";
+    $("#subtotal").textContent = fmt(sub + ship);
     $("#checkoutBtn").disabled = !items.length;
-    $("#shipText").textContent = FREE_SHIP == null ? `Shipping & Delivery: ${fmt(SHIPPING)}`
-      : !items.length ? `Free shipping over ${fmt(FREE_SHIP)}.`
-      : FREE_SHIP - sub > 0 ? `${fmt(FREE_SHIP - sub)} until free shipping.` : "Free shipping applied.";
     $("#cartBody").innerHTML = items.length ? items.map(({ p, q }) => `
       <div class="line" data-id="${p.id}">
         <div class="line__img">${art(p)}</div>
-        <div><h3>${esc(p.name)}</h3><p>${esc(p.sub)}</p>
+        <div><h3>${esc(p.name)}</h3>
           <div class="qty"><button data-qty="-1" aria-label="Decrease quantity">−</button><span>${q}</span><button data-qty="1" aria-label="Increase quantity">+</button></div>
         </div>
         <div class="line__end"><span>${fmt(p.price * q)}</span><button class="text-btn" data-remove>Remove</button></div>

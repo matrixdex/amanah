@@ -615,3 +615,9 @@ body, body * { font-size: var(--fs-body) !important; }
 .checkout__pay { min-width: 0; }
 .checkout__form { min-height: 120px; margin-top: 20px; }
 .checkout__loading { color: var(--muted); }
+
+/* cart: shipping row above the subtotal */
+.drawer__row--ship { margin-bottom: 10px; color: var(--muted); }
+
+/* cart line: name, then quantity (no subtitle) */
+.line h3 { margin-bottom: 10px; }
