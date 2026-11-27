@@ -621,3 +621,12 @@ body, body * { font-size: var(--fs-body) !important; }
 
 /* cart line: name, then quantity (no subtitle) */
 .line h3 { margin-bottom: 10px; }
+
+/* cart line: name and price on top, quantity and Remove on one row below */
+.line { grid-template-columns: 72px 1fr auto; grid-template-rows: auto auto; column-gap: 16px; row-gap: 10px; align-content: center; }
+.line > div:nth-child(2), .line .line__end { display: contents; }
+.line .line__img { grid-column: 1; grid-row: 1 / span 2; }
+.line h3 { grid-column: 2; grid-row: 1; margin: 0; align-self: end; }
+.line .qty { grid-column: 2; grid-row: 2; align-self: center; justify-self: start; }
+.line .line__end > span { grid-column: 3; grid-row: 1; align-self: end; text-align: right; }
+.line .line__end > .text-btn { grid-column: 3; grid-row: 2; align-self: center; justify-self: end; }
