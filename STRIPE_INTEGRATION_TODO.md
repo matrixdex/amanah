@@ -36,6 +36,7 @@ These parameters were configured in Checkout Studio and are already set correctl
 | automatic_tax | { enabled: false } |
 | submit_type | auto |
 | integration_identifier | custom_embedded_web_0001 |
+| return_url | `https://<site>/?checkout=complete&session_id={CHECKOUT_SESSION_ID}` (added in code, not in Checkout Studio: the embedded form needs it to finish payments) |
 | payment_method_collection | always (only sent if `mode` is changed to `"subscription"`; Stripe allows it only in that mode) |
 | Stripe API version | 2026-03-25.dahlia (server), Stripe.js `https://js.stripe.com/dahlia/stripe.js` (browser) |
 | Appearance | theme `flat`, labels `auto`, inputs `condensed`, colours and spacing as configured |
@@ -58,6 +59,7 @@ These parameters were configured in Checkout Studio and are already set correctl
 ```
 functions/api/create-checkout-session.js   POST: builds the Checkout Session from products.json, returns { client_secret, publishable_key }
 functions/api/webhook.js                    POST: verifies the Stripe signature, handles checkout.session.completed
+functions/api/session-status.js             GET: tells the return page whether a session is complete (status only, no customer data)
 package.json, package-lock.json             stripe SDK dependency
 .env.example                                key names for local development
 .gitignore                                  keeps keys and node_modules out of git
@@ -72,7 +74,7 @@ web_5/styles.css                            small styles for the form container
 2. `web_5/app.js` sends the cart (product ids and quantities only) to `POST /api/create-checkout-session`.
 3. The function reads `products.json` from the deployed site, builds each line item from the product's name and price there, creates a Checkout Session with the configured parameters, and returns the session's client secret and the publishable key. Unknown or unavailable products are ignored.
 4. The browser loads Stripe.js from Stripe (never self-hosted), calls `stripe.initCheckoutFormSdk(...)` with the configured appearance, and mounts the payment form into `#checkout-form`. Card details stay inside Stripe's iframe.
-5. When the customer submits, the form's `confirm` event calls `actions.confirm(...)`. On success the cart is cleared and a thank-you message shows; on failure Stripe's message appears under the form.
+5. When the customer submits, the form's `confirm` event calls `actions.confirm({ formConfirmEvent, redirect: "if_required" })`. Card payments finish on the page: the cart is cleared and a thank-you message shows. Payment methods that need a redirect send the customer to the `return_url`; the homepage then asks `/api/session-status` whether the session is complete before clearing the cart and thanking them. Any error appears under the form.
 6. Stripe sends `checkout.session.completed` to `/api/webhook`. That is the reliable signal that an order is paid; fulfil orders there, not in the browser.
 
 If the API or Stripe.js cannot be reached, the panel shows an error instead of the form and nothing is charged.

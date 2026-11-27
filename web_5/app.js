@@ -275,6 +275,24 @@ function boot() {
       spacingUnit: "4px"
     }
   };
+  function orderComplete() {
+    cart = {}; saveCart(); renderCart();
+    openModal(`<div class="confirm"><h2>Thank you.</h2><p>Your order has been received. A receipt is on its way to your email.</p><button class="btn" id="confirmDone">Continue</button></div>`);
+    $("#confirmDone").addEventListener("click", closeModal);
+  }
+  /* Back from a payment method that redirected: check the session's status before confirming the order. */
+  (async () => {
+    const params = new URLSearchParams(location.search);
+    const sessionId = params.get("session_id");
+    if (params.get("checkout") !== "complete" || !sessionId) return;
+    history.replaceState(null, "", location.pathname + location.hash);
+    try {
+      const res = await fetch("/api/session-status?session_id=" + encodeURIComponent(sessionId));
+      const data = await res.json();
+      if (data.status === "complete") orderComplete();
+      else toast("Your payment was not completed.");
+    } catch (e) { toast("We could not confirm your payment. Please check your email for a receipt."); }
+  })();
   async function openCheckout() {
     const items = cartItems(); if (!items.length) return;
     const sub = subtotal();
@@ -310,14 +328,15 @@ function boot() {
       const loadActionsResult = await checkout.loadActions();
       if (loadActionsResult.type !== "success") throw new Error("Checkout could not be started. Please try again.");
       form.on("confirm", async (event) => {
+        showError("");
         try {
-          const result = await loadActionsResult.actions.confirm({ formConfirmEvent: event });
+          /* Cards finish here without leaving the page; methods that need a redirect come back via return_url. */
+          const result = await loadActionsResult.actions.confirm({ formConfirmEvent: event, redirect: "if_required" });
           if (result && result.type === "error") { showError(result.error.message); return; }
-          cart = {}; saveCart(); renderCart();
-          modalContent.innerHTML = `<div class="confirm"><h2>Thank you.</h2><p>Your order has been received. A receipt is on its way to your email.</p><button class="btn" id="confirmDone">Continue</button></div>`;
-          $("#confirmDone").addEventListener("click", closeModal);
+          orderComplete();
         } catch (error) {
           console.error("Payment confirmation error:", error);
+          showError(error && error.message ? error.message : "Your payment could not be completed. Please try again.");
         }
       });
     } catch (err) {

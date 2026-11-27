@@ -57,6 +57,8 @@ export async function onRequestPost({ request, env }) {
     automatic_tax: { enabled: false },
     submit_type: "auto",
     integration_identifier: "custom_embedded_web_0001",
+    // Where Stripe sends the customer back after a payment method that needs a redirect.
+    return_url: `${origin}/?checkout=complete&session_id={CHECKOUT_SESSION_ID}`,
   };
   if (mode === "subscription") {
     sessionParams.payment_method_collection = "always";
