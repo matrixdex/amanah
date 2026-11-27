@@ -4,6 +4,10 @@
 import Stripe from "stripe";
 
 export async function onRequestPost({ request, env }) {
+  if (!env.STRIPE_SECRET_KEY || !env.STRIPE_PUBLISHABLE_KEY) {
+    console.error("STRIPE_SECRET_KEY or STRIPE_PUBLISHABLE_KEY is not set for this deployment.");
+    return Response.json({ error: "Payments are not set up yet. Please try again later." }, { status: 503 });
+  }
   const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
     apiVersion: "2026-03-25.dahlia",
     httpClient: Stripe.createFetchHttpClient(),

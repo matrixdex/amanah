@@ -3,7 +3,7 @@
 import Stripe from "stripe";
 
 export async function onRequestPost({ request, env }) {
-  if (!env.STRIPE_WEBHOOK_SECRET) return new Response("Webhook secret not configured", { status: 500 });
+  if (!env.STRIPE_WEBHOOK_SECRET || !env.STRIPE_SECRET_KEY) return new Response("Stripe keys not configured", { status: 500 });
 
   const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
     apiVersion: "2026-03-25.dahlia",
