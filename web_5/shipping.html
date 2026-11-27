@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shipping & Returns - Amanah Health Products</title>
+  <meta name="description" content="Delivery and returns at Amanah Health Products: UK delivery for a flat £10 per order, and returns of unopened products within 30 days." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://js.stripe.com/dahlia/stripe.js"></script>
+</head>
+<body>
+  <header class="be-nav" id="nav">
+    <div class="be-pill">
+      <a href="index.html" class="be-logo"><img class="brand-logo" src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
+      <nav class="be-links" aria-label="Primary"><a href="shop.html">Shop</a><a href="about.html">About</a><a href="faq.html">FAQ</a></nav>
+      <button class="be-bag" data-open-cart>Cart <span data-cart-count>0</span></button><button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
+    </div>
+  </header>
+
+  <main id="top" class="wrap"><section class="be-sec doc-page">
+      <div class="be-head doc-head"><h1>Shipping &amp; Returns</h1><p class="doc__intro">UK delivery for a flat £10 per order.</p></div>
+      <article class="be-box c-white doc"><p class="doc__updated">Last updated: November 2026</p>
+
+        <h2>Where we deliver</h2>
+        <p>We currently deliver to addresses in the United Kingdom only. You enter your delivery address at checkout.</p>
+        <h2>Delivery charge</h2>
+        <p>Delivery is a flat £10 per order, whatever you order. The charge is shown in your cart and at checkout before you pay.</p>
+        <h2>When your order ships</h2>
+        <p>Orders ship within two working days. Delivery times after dispatch depend on the courier and your location. If your order has not arrived when you expect it, email us at <a href="mailto:info@amanahealth.uk">info@amanahealth.uk</a> and we will look into it.</p>
+        <h2>Returns</h2>
+        <p>If you change your mind, you can return unopened products in their original condition within 30 days of delivery for a full refund of the product price.</p>
+        <ul>
+          <li>Email us at <a href="mailto:info@amanahealth.uk">info@amanahealth.uk</a> with your name and the items you would like to return, and we will tell you where to send them.</li>
+          <li>Return postage is paid by you, unless the item is faulty or we sent the wrong item.</li>
+          <li>We refund you to your original payment method within 14 days of receiving the return.</li>
+        </ul>
+        <h2>Opened products</h2>
+        <p>Our products are food and wellness products. For health protection and hygiene reasons, we cannot accept the return of products that have been opened or whose seal has been broken, unless they are faulty.</p>
+        <h2>Damaged, faulty or wrong items</h2>
+        <p>If something arrives damaged or faulty, or is not what you ordered, email us at <a href="mailto:info@amanahealth.uk">info@amanahealth.uk</a> as soon as possible, ideally with a photo. We will send a replacement or a full refund, including the delivery charge.</p>
+        <p>This policy does not affect your statutory rights under UK consumer law, including the Consumer Contracts Regulations 2013 and the Consumer Rights Act 2015.</p>
+      </article>
+    </section></main>
+
+  <footer class="be-foot wrap">
+    <nav class="foot-cols" aria-label="Footer">
+      <div class="foot-col"><h3>Shop</h3><a href="shop.html">Shop All</a><a href="benefits.html">Health Benefits</a></div>
+      <div class="foot-col"><h3>Company</h3><a href="about.html">About Us</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h3>Help</h3><a href="faq.html">FAQ</a><a href="shipping.html">Shipping &amp; Returns</a></div>
+      <div class="foot-col"><h3>Legal</h3><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="disclaimer.html">Disclaimer</a></div>
+    </nav>
+    <span class="foot-brand"><img class="foot-logo" src="assets/logo.png" alt="Amanah Health Products" width="256" height="256" /><span>© <span id="year"></span> Amanah Health Products. All Rights Reserved.</span></span>
+  </footer>
+
+
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="menu__top">
+      <a href="index.html" class="menu__logo"><img src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
+      <button class="menu__close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
+    </div>
+    <nav class="menu__links" aria-label="Menu"><a href="shop.html" style="--i:0">Shop</a><a href="about.html" style="--i:1">About</a><a href="faq.html" style="--i:2">FAQ</a></nav>
+    <button class="menu__cart" type="button" data-open-cart style="--i:3">Cart (<span data-cart-count>0</span>)</button>
+  </div>
+
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer__head">
+      <h2>Cart</h2>
+      <button class="text-btn" data-close-drawer>Close</button>
+    </div>
+    <div class="drawer__body" id="cartBody"></div>
+    <div class="drawer__foot">
+      <div class="drawer__row drawer__row--ship" id="shipRow"><span>Shipping &amp; Delivery</span><span id="shipText"></span></div>
+      <div class="drawer__row"><span>Subtotal</span><span id="subtotal">£0.00</span></div>
+      <button class="btn" id="checkoutBtn">Checkout</button>
+    </div>
+  </aside>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="text-btn modal__close" aria-label="Close">Close</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

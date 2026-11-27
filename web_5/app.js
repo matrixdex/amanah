@@ -421,8 +421,24 @@ function boot() {
     const others = PRODUCTS.filter((o) => o.id !== p.id);
     if (others.length) { $("#more").hidden = false; renderGrid($("#moreGrid"), others); }
   }
+  /* ---------- Health Benefits page ---------- */
+  function renderBenefitsPage() {
+    const host = $("#benefitsList"); if (!host) return;
+    host.innerHTML = PRODUCTS.filter((p) => p.available !== false).map((p) => `
+      <article class="bp" id="${esc(p.id)}">
+        <a class="bp__media" href="product.html?id=${encodeURIComponent(p.id)}" aria-label="${esc(p.name)}">${art(p)}</a>
+        <div class="bp__body">
+          <h2>${esc(p.name)}</h2>
+          <p class="bp__sub">${esc(p.sub)}</p>
+          <div class="benefits"><ul>${(p.benefits || []).map((b) => `<li><strong>${esc(b.title)}</strong><span>${esc(b.text)}</span></li>`).join("")}</ul></div>
+          <a class="bp__link" href="product.html?id=${encodeURIComponent(p.id)}">View product</a>
+        </div>
+      </article>`).join("");
+  }
+
   renderGrid();
   renderProductPage();
+  renderBenefitsPage();
   renderCart();
 }
 

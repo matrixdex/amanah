@@ -16,7 +16,7 @@
   <header class="be-nav" id="nav">
     <div class="be-pill">
       <a href="#top" class="be-logo"><img class="brand-logo" src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
-      <nav class="be-links" aria-label="Primary"><a href="shop.html">Shop</a><a href="#about">About</a><a href="#faq">FAQ</a></nav>
+      <nav class="be-links" aria-label="Primary"><a href="shop.html">Shop</a><a href="about.html">About</a><a href="faq.html">FAQ</a></nav>
       <button class="be-bag" data-open-cart>Cart <span data-cart-count>0</span></button><button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
     </div>
   </header>
@@ -58,7 +58,15 @@
     </section>
   </main>
 
-  <footer class="be-foot wrap"><span class="foot-brand"><img class="foot-logo" src="assets/logo.png" alt="Amanah Health Products" width="256" height="256" /><span>© <span id="year"></span> Amanah Health Products. All Rights Reserved.</span></span></footer>
+  <footer class="be-foot wrap">
+    <nav class="foot-cols" aria-label="Footer">
+      <div class="foot-col"><h3>Shop</h3><a href="shop.html">Shop All</a><a href="benefits.html">Health Benefits</a></div>
+      <div class="foot-col"><h3>Company</h3><a href="about.html">About Us</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h3>Help</h3><a href="faq.html">FAQ</a><a href="shipping.html">Shipping &amp; Returns</a></div>
+      <div class="foot-col"><h3>Legal</h3><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="disclaimer.html">Disclaimer</a></div>
+    </nav>
+    <span class="foot-brand"><img class="foot-logo" src="assets/logo.png" alt="Amanah Health Products" width="256" height="256" /><span>© <span id="year"></span> Amanah Health Products. All Rights Reserved.</span></span>
+  </footer>
 
 
   <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
@@ -66,7 +74,7 @@
       <a href="#top" class="menu__logo"><img src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
       <button class="menu__close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
     </div>
-    <nav class="menu__links" aria-label="Menu"><a href="shop.html" style="--i:0">Shop</a><a href="#about" style="--i:1">About</a><a href="#faq" style="--i:2">FAQ</a></nav>
+    <nav class="menu__links" aria-label="Menu"><a href="shop.html" style="--i:0">Shop</a><a href="about.html" style="--i:1">About</a><a href="faq.html" style="--i:2">FAQ</a></nav>
     <button class="menu__cart" type="button" data-open-cart style="--i:3">Cart (<span data-cart-count>0</span>)</button>
   </div>
 

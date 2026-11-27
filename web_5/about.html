@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Amanah Health Products</title>
+  <meta name="description" content="About Amanah Health Products Limited, the UK company bringing Dr Ali's traditional natural formulas to your everyday routine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://js.stripe.com/dahlia/stripe.js"></script>
+</head>
+<body>
+  <header class="be-nav" id="nav">
+    <div class="be-pill">
+      <a href="index.html" class="be-logo"><img class="brand-logo" src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
+      <nav class="be-links" aria-label="Primary"><a href="shop.html">Shop</a><a href="about.html">About</a><a href="faq.html">FAQ</a></nav>
+      <button class="be-bag" data-open-cart>Cart <span data-cart-count>0</span></button><button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
+    </div>
+  </header>
+
+  <main id="top" class="wrap"><section class="be-sec doc-page">
+      <div class="be-head doc-head"><h1>About Us</h1><p class="doc__intro">Traditional formulas, made carefully.</p></div>
+      <article class="be-box c-white doc"><p class="doc__updated">Last updated: November 2026</p>
+
+        <h2>Who we are</h2>
+        <p>Amanah Health Products Limited is a company registered in the United Kingdom. We make natural products under the Dr Ali's name: a nourishing overnight breakfast muesli, a joint support oil, a gentle bowel ease blend, a detox powder and a TGF powder.</p>
+        <p>Each formula draws on traditional herbal knowledge. Two of them, Bowel Ease Concept and Detox Powder, are natural blends by the renowned physician Hakeem Abdul Hameed, first made in the 1920s.</p>
+        <h2>Our name</h2>
+        <p>Amanah is an Arabic word for trust: something placed in your care that you look after honestly. It is the standard we hold ourselves to, in what goes into our products and in how we treat the people who buy them.</p>
+        <h2>Our promise</h2>
+        <ul>
+          <li><strong>Every ingredient listed.</strong> The full ingredients are on every pack and on every product page.</li>
+          <li><strong>Made in the United Kingdom.</strong></li>
+          <li><strong>Against animal testing.</strong></li>
+          <li><strong>Nothing you don't need.</strong> Clear labels, simple formulas and honest descriptions.</li>
+        </ul>
+        <h2>Our products</h2>
+        <p>Read what each product is for on our <a href="benefits.html">Health Benefits</a> page, or browse <a href="shop.html">all products</a>.</p>
+        <h2>Get in touch</h2>
+        <p>We are happy to answer questions about any of our products. Email us at <a href="mailto:info@amanahealth.uk">info@amanahealth.uk</a>, or see our <a href="contact.html">contact page</a>.</p>
+      </article>
+    </section></main>
+
+  <footer class="be-foot wrap">
+    <nav class="foot-cols" aria-label="Footer">
+      <div class="foot-col"><h3>Shop</h3><a href="shop.html">Shop All</a><a href="benefits.html">Health Benefits</a></div>
+      <div class="foot-col"><h3>Company</h3><a href="about.html">About Us</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h3>Help</h3><a href="faq.html">FAQ</a><a href="shipping.html">Shipping &amp; Returns</a></div>
+      <div class="foot-col"><h3>Legal</h3><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="disclaimer.html">Disclaimer</a></div>
+    </nav>
+    <span class="foot-brand"><img class="foot-logo" src="assets/logo.png" alt="Amanah Health Products" width="256" height="256" /><span>© <span id="year"></span> Amanah Health Products. All Rights Reserved.</span></span>
+  </footer>
+
+
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="menu__top">
+      <a href="index.html" class="menu__logo"><img src="assets/logo.png" alt="" width="256" height="256" />Amanah</a>
+      <button class="menu__close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
+    </div>
+    <nav class="menu__links" aria-label="Menu"><a href="shop.html" style="--i:0">Shop</a><a href="about.html" style="--i:1">About</a><a href="faq.html" style="--i:2">FAQ</a></nav>
+    <button class="menu__cart" type="button" data-open-cart style="--i:3">Cart (<span data-cart-count>0</span>)</button>
+  </div>
+
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer__head">
+      <h2>Cart</h2>
+      <button class="text-btn" data-close-drawer>Close</button>
+    </div>
+    <div class="drawer__body" id="cartBody"></div>
+    <div class="drawer__foot">
+      <div class="drawer__row drawer__row--ship" id="shipRow"><span>Shipping &amp; Delivery</span><span id="shipText"></span></div>
+      <div class="drawer__row"><span>Subtotal</span><span id="subtotal">£0.00</span></div>
+      <button class="btn" id="checkoutBtn">Checkout</button>
+    </div>
+  </aside>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__panel">
+      <button class="text-btn modal__close" aria-label="Close">Close</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
