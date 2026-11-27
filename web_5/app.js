@@ -209,7 +209,7 @@ function boot() {
     $$("[data-cart-count]").forEach((el) => (el.textContent = items.reduce((s, i) => s + i.q, 0)));
     $("#subtotal").textContent = fmt(sub);
     $("#checkoutBtn").disabled = !items.length;
-    $("#shipText").textContent = FREE_SHIP == null ? `UK delivery: ${fmt(SHIPPING)} flat per order.`
+    $("#shipText").textContent = FREE_SHIP == null ? `Shipping & Delivery: ${fmt(SHIPPING)} flat per order.`
       : !items.length ? `Free shipping over ${fmt(FREE_SHIP)}.`
       : FREE_SHIP - sub > 0 ? `${fmt(FREE_SHIP - sub)} until free shipping.` : "Free shipping applied.";
     $("#cartBody").innerHTML = items.length ? items.map(({ p, q }) => `
@@ -306,7 +306,7 @@ function boot() {
         <aside class="summary">
           <h3>Summary</h3>
           ${items.map(({ p, q }) => `<div class="summary__line"><span>${esc(p.name)} × ${q}</span><span>${fmt(p.price * q)}</span></div>`).join("")}
-          <div class="summary__line"><span>UK delivery</span><span>${fmt(SHIPPING)}</span></div>
+          <div class="summary__line"><span>Shipping &amp; Delivery</span><span>${fmt(SHIPPING)}</span></div>
           <div class="summary__line summary__total"><span>Total</span><span>${fmt(sub + SHIPPING)}</span></div>
         </aside>
       </div>`);

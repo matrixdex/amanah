@@ -64,7 +64,7 @@ export async function onRequestPost({ request, env }) {
     shipping_options: [{
       shipping_rate_data: {
         type: "fixed_amount",
-        display_name: "UK delivery",
+        display_name: "Shipping & Delivery",
         fixed_amount: { amount: shippingPence, currency },
       },
     }],

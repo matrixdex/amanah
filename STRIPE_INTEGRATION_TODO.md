@@ -37,7 +37,7 @@ These parameters were configured in Checkout Studio and are already set correctl
 | submit_type | auto |
 | integration_identifier | custom_embedded_web_0001 |
 | shipping_address_collection | `allowed_countries` from `shipsTo` in `web_5/products.json` (currently `GB`, UK only) |
-| shipping_options | one fixed rate, "UK delivery", amount from `shippingFlat` in `web_5/products.json` (currently £10, no free-shipping threshold) |
+| shipping_options | one fixed rate, "Shipping & Delivery", amount from `shippingFlat` in `web_5/products.json` (currently £10, no free-shipping threshold) |
 | return_url | `https://<site>/?checkout=complete&session_id={CHECKOUT_SESSION_ID}` (added in code, not in Checkout Studio: the embedded form needs it to finish payments) |
 | payment_method_collection | always (only sent if `mode` is changed to `"subscription"`; Stripe allows it only in that mode) |
 | Stripe API version | 2026-03-25.dahlia (server), Stripe.js `https://js.stripe.com/dahlia/stripe.js` (browser) |
@@ -96,7 +96,7 @@ More test cards: https://docs.stripe.com/testing. Check results under Payments a
 
 ## Next steps
 
-- **Shipping.** Done: the form collects a UK delivery address and adds a flat £10 "UK delivery" charge to every order. To change the rate or add countries, edit `shippingFlat` and `shipsTo` (two-letter country codes such as `GB`, `IE`) in `web_5/products.json` and redeploy. The cart drawer, checkout summary and Stripe all read the same values. The FAQ on the homepage mentions £10 and UK-only delivery in plain text, so update it too if the policy changes.
+- **Shipping.** Done: the form collects a UK delivery address and adds a flat £10 "Shipping & Delivery" charge to every order. To change the rate or add countries, edit `shippingFlat` and `shipsTo` (two-letter country codes such as `GB`, `IE`) in `web_5/products.json` and redeploy. The cart drawer, checkout summary and Stripe all read the same values. The FAQ on the homepage mentions £10 and UK-only delivery in plain text, so update it too if the policy changes.
 - **VAT.** `automatic_tax` is off. If you're VAT-registered, enable Stripe Tax, set product tax codes, and turn `automatic_tax` on.
 - **Fulfilment.** In `functions/api/webhook.js`, on `checkout.session.completed`: send the order email (Postmark or Resend), create the Sendcloud label, and store the order (Cloudflare D1).
 - **Order tracking.** Save `session.id`, the PaymentIntent id and customer email with each order so refunds and customer questions can be traced.
