@@ -727,3 +727,14 @@ body, body * { font-size: var(--fs-body) !important; }
 .benefits li:last-child { border-top: 1px solid var(--line); }
 .doc .contact-card h2 { padding: 0; margin: 0 0 8px; border: 0; }
 @media (max-width: 760px) { .contact-card { text-align: center; } }
+
+/* ===== Footer: square, ruled layout (no rounded box) ===== */
+.be-foot { gap: 0; padding: 56px 0 40px; margin-top: 40px; border-top: 1px solid var(--line); }
+.foot-cols { background: transparent; border-radius: 0; padding: 0 0 40px; gap: 32px; }
+.foot-col h3 { margin-bottom: 6px; }
+.be-foot .foot-brand { align-self: stretch; justify-content: center; padding-top: 28px; border-top: 1px solid var(--line); }
+@media (max-width: 760px) {
+  .be-foot { padding: 40px 0 32px; margin-top: 24px; }
+  .foot-cols { padding: 0 0 32px; row-gap: 28px; }
+  .be-foot .foot-brand { padding-top: 24px; }
+}
