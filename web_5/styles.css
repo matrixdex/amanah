@@ -782,3 +782,26 @@ body, body * { font-size: var(--fs-body) !important; }
   .be-about__main { justify-content: flex-start; text-align: left; }
   .be-about__main h2 { max-width: none; margin: 0; text-wrap: wrap; }
 }
+
+/* ===== Health Benefits page: bento boxes (image tile + pastel content box per product) ===== */
+.bp-list { gap: 14px; max-width: none; }
+.bp { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 14px; padding: 0; border: 0; background: none; }
+.bp:first-child { padding-top: 0; }
+.bp__media { border-radius: var(--radius); overflow: hidden; align-self: stretch; background: var(--tile); }
+.bp__media img { height: 100%; min-height: 100%; aspect-ratio: auto; object-fit: cover; }
+.bp__body { border-radius: var(--radius); padding: 40px 44px; justify-content: center; }
+.bp:nth-child(4n+1) .bp__body { background: var(--c-sage); }
+.bp:nth-child(4n+2) .bp__body { background: var(--c-blush); }
+.bp:nth-child(4n+3) .bp__body { background: var(--c-butter); }
+.bp:nth-child(4n+4) .bp__body { background: var(--c-lav); }
+.bp__body .benefits li { border-color: rgb(45 42 50 / 0.14); }
+.bp__body .benefits span, .bp__sub { color: #57525e; }
+.bp__link { color: var(--text); font-weight: 500; }
+.bp-note { margin-top: 36px; }
+@media (max-width: 760px) {
+  .bp { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .bp__media img { aspect-ratio: 16 / 11; height: auto; }
+  .bp__body { padding: 28px 22px; }
+  .bp-list { gap: 10px; }
+  .bp + .bp { margin-top: 14px; }
+}
