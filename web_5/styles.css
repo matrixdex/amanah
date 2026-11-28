@@ -776,3 +776,9 @@ body, body * { font-size: var(--fs-body) !important; }
   .be-news { padding: 36px 24px; }
   .be-news h2 { margin-bottom: 20px; }
 }
+
+/* statement: left-aligned on widescreen, natural wrapping across the full box width */
+@media (min-width: 761px) {
+  .be-about__main { justify-content: flex-start; text-align: left; }
+  .be-about__main h2 { max-width: none; margin: 0; text-wrap: wrap; }
+}
