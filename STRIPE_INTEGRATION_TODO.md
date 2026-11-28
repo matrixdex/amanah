@@ -17,7 +17,7 @@ The following values are placeholders and must be updated before going live.
 | STRIPE_SECRET_KEY | sk_test_... | Secret key from the same page. Never put it in the site files. |
 | STRIPE_WEBHOOK_SECRET | whsec_... | Signing secret of the webhook endpoint you create for `/api/webhook`. |
 
-**No Stripe Price IDs are needed.** `line_items` are built on the server from the site's own `products.json` (product name, subtitle, image and price in GBP), using Stripe's inline `price_data`. The browser sends only product ids and quantities, so customers cannot change a price. To change a price, edit `web_5/products.json` and redeploy; Stripe charges the new price on the next order. The prices in `products.json` are still placeholders (£45, £30, £30, £45, £30): set your real prices there.
+**No Stripe Price IDs are needed.** `line_items` are built on the server from the site's own `products.json` (product name, subtitle, image and price in GBP), using Stripe's inline `price_data`. The browser sends only product ids and quantities, so customers cannot change a price. To change a price, edit `web_5/products.json` and redeploy; Stripe charges the new price on the next order. Current prices in `web_5/products.json`: Overnight Breakfast Muesli £55, Joint Support Oil £25, Bowel Ease Concept £30, Detox Powder £45, TGF Powder £30.
 
 ## Configured Parameters
 
