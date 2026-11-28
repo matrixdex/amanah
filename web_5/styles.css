@@ -814,3 +814,13 @@ body, body * { font-size: var(--fs-body) !important; }
 @media (max-width: 760px) { .bp-note { margin-top: 56px; } }
 /* footer description: room for the longer sentence */
 .foot-tag { max-width: 34ch; }
+
+/* homepage: statement box sits one bento gap below the hero and one above the three boxes */
+.be-hero { padding-bottom: 0; }
+#about.be-sec { padding-top: 14px; }
+@media (max-width: 640px) { #about.be-sec { padding-top: 10px; } }
+
+/* homepage Shop All: equal space to the product cards above and the FAQ / newsletter boxes below */
+.be-more { padding: 32px 0; }
+#faq.be-sec { padding-top: 0; }
+.be-news h2, .be-about__main h2 { line-height: 1.15; }
