@@ -925,3 +925,7 @@ body, body * { font-size: var(--fs-body) !important; }
   .ab-steps { width: fit-content; max-width: 100%; margin: 0 auto; }
   .ab-steps li { justify-content: flex-start; text-align: left; }
 }
+
+/* Shop page title centred */
+body:has(#shopTitle), .be-head--center { }
+.shop-head { justify-content: center !important; text-align: center; }
