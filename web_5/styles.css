@@ -836,3 +836,5 @@ body, body * { font-size: var(--fs-body) !important; }
 
 /* homepage "What we have": plain list, no dividers */
 .be-about li { border-bottom: 0; padding: 4px 0; }
+.doc ul.doc__lines { list-style: none; padding-left: 0; }
+.doc ul.doc__lines li { margin-bottom: 4px; }
