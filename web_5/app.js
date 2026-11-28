@@ -445,6 +445,34 @@ function boot() {
   renderCart();
 }
 
+/* ---------- Accordions (product details, FAQs): smooth open and close ---------- */
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  document.addEventListener("click", (e) => {
+    const summary = e.target.closest("details > summary");
+    if (!summary || reduce.matches || !summary.parentElement.animate) return;
+    const d = summary.parentElement;
+    e.preventDefault();
+    if (d._anim) d._anim.cancel();
+    const start = d.offsetHeight;
+    const opening = !d.open || d._closing;
+    d._closing = !opening;
+    if (opening) d.open = true;
+    const end = opening ? d.scrollHeight : summary.offsetHeight + (parseFloat(getComputedStyle(d).borderTopWidth) || 0) + (parseFloat(getComputedStyle(d).borderBottomWidth) || 0);
+    d.style.overflow = "hidden";
+    const content = [...d.children].filter((c) => c !== summary);
+    content.forEach((c) => c.animate({ opacity: opening ? [0, 1] : [1, 0] }, { duration: 260, easing: "ease-out", fill: "both" }));
+    d._anim = d.animate({ height: [`${start}px`, `${end}px`] }, { duration: 300, easing: "cubic-bezier(0.22, 1, 0.36, 1)" });
+    d._anim.onfinish = () => {
+      if (!opening) d.open = false;
+      d._closing = false;
+      d.style.overflow = ""; d._anim = null;
+      content.forEach((c) => c.getAnimations().forEach((a) => a.cancel()));
+    };
+    d._anim.oncancel = () => { d.style.overflow = ""; };
+  });
+})();
+
 fetch("products.json")
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then((db) => {
