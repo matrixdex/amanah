@@ -272,7 +272,7 @@ function boot() {
       colorPrimary: "#0570de",
       colorSuccess: "#00c853",
       colorText: "#30313d",
-      fontFamily: "default",
+      fontFamily: "Geist, system-ui, sans-serif",
       fontSizeBase: "16px",
       spacingUnit: "4px"
     }
@@ -324,7 +324,11 @@ function boot() {
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.client_secret || !data.publishable_key) throw new Error(data.error || "Checkout could not be started. Please try again.");
       const stripe = Stripe(data.publishable_key);
-      const checkout = stripe.initCheckoutFormSdk({ clientSecret: Promise.resolve(data.client_secret), appearance: STRIPE_APPEARANCE });
+      const checkout = stripe.initCheckoutFormSdk({
+        clientSecret: Promise.resolve(data.client_secret),
+        appearance: STRIPE_APPEARANCE,
+        fonts: [{ cssSrc: "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" }]
+      });
       if (!$("#checkout-form")) return;                       /* the checkout was closed while loading */
       $("#checkout-form").innerHTML = "";
       const form = checkout.createForm({ layout: "expanded" });

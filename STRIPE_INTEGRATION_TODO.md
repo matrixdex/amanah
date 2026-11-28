@@ -41,7 +41,7 @@ These parameters were configured in Checkout Studio and are already set correctl
 | return_url | `https://<site>/?checkout=complete&session_id={CHECKOUT_SESSION_ID}` (added in code, not in Checkout Studio: the embedded form needs it to finish payments) |
 | payment_method_collection | always (only sent if `mode` is changed to `"subscription"`; Stripe allows it only in that mode) |
 | Stripe API version | 2026-03-25.dahlia (server), Stripe.js `https://js.stripe.com/dahlia/stripe.js` (browser) |
-| Appearance | theme `flat`, labels `auto`, inputs `condensed`, colours and spacing as configured |
+| Appearance | theme `flat`, labels `auto`, inputs `condensed`, colours and spacing as configured; font changed from `default` to Geist (loaded via the `fonts` option) to match the site |
 | Form layout | expanded |
 
 ## Setup
