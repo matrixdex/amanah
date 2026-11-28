@@ -932,3 +932,8 @@ body:has(#shopTitle), .be-head--center { }
 /* footer: company registration line */
 .foot-bottom { flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .foot-legal { margin: 0; color: #57525e; max-width: 70ch; }
+
+/* FAQ and product detail answers use the full width of their box */
+.faq__list p, .details p, .doc .faq__list p { max-width: none; }
+.faq__list summary { gap: 24px; }
+.details details p { margin-top: 0; }
