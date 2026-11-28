@@ -833,3 +833,6 @@ body, body * { font-size: var(--fs-body) !important; }
 /* product page: health benefits without divider lines */
 .pdp--page .benefits li, .pdp--page .benefits li:last-child { border: 0; }
 .pdp--page .benefits li { padding: 10px 0; }
+
+/* homepage "What we have": plain list, no dividers */
+.be-about li { border-bottom: 0; padding: 4px 0; }
