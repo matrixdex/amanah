@@ -809,3 +809,6 @@ body, body * { font-size: var(--fs-body) !important; }
 .bp__body h2 { margin-bottom: 14px; }
 .bp__btn { align-self: flex-start; margin-top: 24px; }
 @media (max-width: 760px) { .bp__btn { align-self: center; } }
+/* Health Benefits note: equal space to the last box above and the footer below */
+.bp-note { margin-top: 80px; }
+@media (max-width: 760px) { .bp-note { margin-top: 56px; } }
