@@ -429,9 +429,8 @@ function boot() {
         <a class="bp__media" href="product.html?id=${encodeURIComponent(p.id)}" aria-label="${esc(p.name)}">${art(p)}</a>
         <div class="bp__body">
           <h2>${esc(p.name)}</h2>
-          <p class="bp__sub">${esc(p.sub)}</p>
           <div class="benefits"><ul>${(p.benefits || []).map((b) => `<li><strong>${esc(b.title)}</strong><span>${esc(b.text)}</span></li>`).join("")}</ul></div>
-          <a class="bp__link" href="product.html?id=${encodeURIComponent(p.id)}">View product</a>
+          <a class="be-btn bp__btn" href="product.html?id=${encodeURIComponent(p.id)}">View Product</a>
         </div>
       </article>`).join("");
   }

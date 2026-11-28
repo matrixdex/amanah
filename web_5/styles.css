@@ -805,3 +805,7 @@ body, body * { font-size: var(--fs-body) !important; }
   .bp-list { gap: 10px; }
   .bp + .bp { margin-top: 14px; }
 }
+/* Health Benefits: name directly above the list, View Product as a button */
+.bp__body h2 { margin-bottom: 14px; }
+.bp__btn { align-self: flex-start; margin-top: 24px; }
+@media (max-width: 760px) { .bp__btn { align-self: center; } }
