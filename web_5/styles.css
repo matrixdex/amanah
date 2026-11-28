@@ -929,3 +929,6 @@ body, body * { font-size: var(--fs-body) !important; }
 /* Shop page title centred */
 body:has(#shopTitle), .be-head--center { }
 .shop-head { justify-content: center !important; text-align: center; }
+/* footer: company registration line */
+.foot-bottom { flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.foot-legal { margin: 0; color: #57525e; max-width: 70ch; }
