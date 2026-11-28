@@ -8,6 +8,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+let SHIPS_TO = ["GB"];
 let PRODUCTS = [], CATS = { all: "All" }, FREE_SHIP = null, SHIPPING = 10, CURRENCY = "£";
 const CART_KEY = "amanah-cart";
 const fmt = (n) => CURRENCY + n.toFixed(2);
@@ -333,7 +334,9 @@ function boot() {
       const checkout = stripe.initCheckoutFormSdk({
         clientSecret: Promise.resolve(data.client_secret),
         appearance: STRIPE_APPEARANCE,
-        fonts: [{ cssSrc: "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" }]
+        fonts: [{ cssSrc: "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" }],
+        /* We only deliver to the UK: start the shipping address on the United Kingdom, whatever country the visitor is in. */
+        defaultValues: { shippingAddress: { name: "", address: { country: SHIPS_TO[0] || "GB", line1: "", line2: "", city: "", postal_code: "", state: "" } } }
       });
       if (!$("#checkout-form")) return;                       /* the checkout was closed while loading */
       $("#checkout-form").innerHTML = "";
@@ -487,6 +490,7 @@ fetch("products.json")
   .then((db) => {
     CURRENCY = db.currencySymbol || "£";
     FREE_SHIP = db.freeShippingOver ?? null;
+    if (Array.isArray(db.shipsTo) && db.shipsTo.length) SHIPS_TO = db.shipsTo;
     SHIPPING = db.shippingFlat ?? SHIPPING;
     db.categories.forEach((c) => { CATS[c.id] = c.name; });
     PRODUCTS = db.products.map((p) => ({ ...p, sub: p.subtitle, cat: p.category, desc: p.description }));
