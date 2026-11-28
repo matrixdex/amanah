@@ -413,7 +413,7 @@ function boot() {
             <div class="qty"><button data-q="-1" aria-label="Decrease quantity">−</button><span id="pdpQty">1</span><button data-q="1" aria-label="Increase quantity">+</button></div>
             <button class="btn" id="pdpAdd">Add to cart</button>
           </div>
-          <div class="benefits"><h2>Health benefits</h2><ul>${(p.benefits || []).map((b) => `<li><strong>${esc(b.title)}</strong><span>${esc(b.text)}</span></li>`).join("")}</ul></div>
+          <div class="benefits" aria-label="Health benefits"><ul>${(p.benefits || []).map((b) => `<li><strong>${esc(b.title)}</strong><span>${esc(b.text)}</span></li>`).join("")}</ul></div>
           <div class="details">${details.map(([k, v]) => `<details><summary>${k}</summary><p>${esc(v)}</p></details>`).join("")}</div>
         </div>
       </div>`;

@@ -838,3 +838,8 @@ body, body * { font-size: var(--fs-body) !important; }
 .be-about li { border-bottom: 0; padding: 4px 0; }
 .doc ul.doc__lines { list-style: none; padding-left: 0; }
 .doc ul.doc__lines li { margin-bottom: 4px; }
+
+/* product page: benefits listed directly, no heading; details follow straight after */
+.pdp--page .benefits { margin-top: 28px; }
+.pdp--page .benefits li:first-child { padding-top: 0; }
+.pdp--page .details { margin-top: 20px; }
