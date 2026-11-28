@@ -316,13 +316,19 @@ function boot() {
     const showError = (msg) => { const e = $("#coError"); if (e) e.textContent = msg; const l = $(".checkout__loading"); if (l) l.remove(); };
     if (typeof Stripe !== "function") { showError("The payment form could not load. Please check your connection and try again."); return; }
     try {
-      const res = await fetch("/api/create-checkout-session", {
+      /* Create the session; retry once after a short pause if the server is briefly unavailable (e.g. mid-deploy). */
+      const startSession = () => fetch("/api/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ items: items.map(({ p, q }) => ({ id: p.id, quantity: q })) })
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.client_secret || !data.publishable_key) throw new Error(data.error || "Checkout could not be started. Please try again.");
+      }).then(async (r) => ({ ok: r.ok, status: r.status, data: await r.json().catch(() => ({})) }))
+        .catch(() => ({ ok: false, status: 0, data: {} }));
+      let res = await startSession();
+      if (!res.ok && res.status !== 400) { await new Promise((r) => setTimeout(r, 1200)); res = await startSession(); }
+      const data = res.data;
+      if (!res.ok || !data.client_secret || !data.publishable_key) {
+        throw new Error(data.error || (res.status === 0 ? "We could not reach our checkout. Please check your connection and try again." : `Checkout could not be started (error ${res.status}). Please try again.`));
+      }
       const stripe = Stripe(data.publishable_key);
       const checkout = stripe.initCheckoutFormSdk({
         clientSecret: Promise.resolve(data.client_secret),
@@ -334,7 +340,10 @@ function boot() {
       const form = checkout.createForm({ layout: "expanded" });
       form.mount("#checkout-form");
       const loadActionsResult = await checkout.loadActions();
-      if (loadActionsResult.type !== "success") throw new Error("Checkout could not be started. Please try again.");
+      if (loadActionsResult.type !== "success") {
+        console.error("Stripe loadActions error:", loadActionsResult.error);
+        throw new Error((loadActionsResult.error && loadActionsResult.error.message) || "The payment form could not be started. Please try again.");
+      }
       form.on("confirm", async (event) => {
         showError("");
         try {
