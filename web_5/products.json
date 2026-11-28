@@ -34,9 +34,9 @@
       "category": "nutrition",
       "price": 55.0,
       "size": "1kg",
-      "description": "A wholesome, nutrient-rich muesli of oats, nuts, seeds and dried fruit, designed to start your day with steady energy. Soak overnight and enjoy with yogurt, milk or your favourite toppings.",
+      "description": "A wholesome, nutrient-rich muesli of oats, nuts, seeds, and dried fruit, designed to start your day with steady energy. Soak overnight and enjoy with yogurt, milk, or your favourite toppings.",
       "ingredients": "Avena sativa, Lycium barbarum, Prunus dulcis, Linum usitatissimum, Morus alba, Vitis vinifera, Citrus sinensis, Pistacia vera, Crocus sativus, Cucurbita pepo, Helianthus annuus, Borassus flabellifer",
-      "directions": "Take 2-3 spoons of muesli, or adjust the amount to suit your appetite, and place it in a bowl. Pour boiling water over the muesli until it is submerged halfway. Let it soak for 6-8 hours to soften and enhance its texture. Once ready, mix with yogurt, milk, or a lactose-free alternative and add fresh fruit, honey or your favourite toppings.",
+      "directions": "Take 2-3 spoons of muesli, or adjust the amount to suit your appetite, and place it in a bowl. Pour boiling water over the muesli until it is submerged halfway. Let it soak for 6-8 hours to soften and enhance its texture. Once ready, mix with yogurt, milk, or a lactose-free alternative and add fresh fruit, honey, or your favourite toppings.",
       "warnings": "Contains nuts. Some individuals may experience mild gastrointestinal discomfort or allergic reactions. If symptoms persist, discontinue use and seek medical advice.",
       "storage": "Store in a cool, dry place, away from direct sunlight. Keep the product tightly sealed and use within 6 months of opening.",
       "image": "assets/products/overnight-breakfast-muesli.jpg",
@@ -57,7 +57,7 @@
         },
         {
           "title": "Immune support",
-          "text": "Packed with vitamins, minerals and antioxidants to strengthen your immune system."
+          "text": "Packed with vitamins, minerals, and antioxidants to strengthen your immune system."
         },
         {
           "title": "Glowing skin",
@@ -76,7 +76,7 @@
       "category": "joint-care",
       "price": 25.0,
       "size": "200ml",
-      "description": "A blend of natural oils for the inflammation of muscles, tendons and ligaments. Rub over the area of concern until absorbed; hot fomentation for 15-20 minutes gives better results.",
+      "description": "A blend of natural oils for the inflammation of muscles, tendons, and ligaments. Rub over the area of concern until absorbed; hot fomentation for 15-20 minutes gives better results.",
       "ingredients": "Sesamum indicum (sesame seed oil), Brassica alba (mustard seed oil), Nigella sativa (black seed oil), Syzygium aromaticum (clove oil), Mahanarayan oil, Rhumasyl oil",
       "directions": "Rub the oil over the area of concern till it is absorbed. If possible use hot fomentation for 15-20 minutes for better results.",
       "warnings": "Ensure you are not allergic to any of the ingredients. If you have any adverse reaction, stop using the oil and consult a healthcare provider. If pregnant or breastfeeding, use with caution and consult a healthcare provider.",
@@ -87,11 +87,11 @@
       "benefits": [
         {
           "title": "Soothes muscular inflammation",
-          "text": "A blend of natural oils made for the inflammation of muscles, tendons and ligaments."
+          "text": "A blend of natural oils made for the inflammation of muscles, tendons, and ligaments."
         },
         {
           "title": "Traditional natural oils",
-          "text": "Sesame, mustard seed, black seed and clove oils, with Mahanarayan and Rhumasyl oils."
+          "text": "Sesame, mustard seed, black seed, and clove oils, with Mahanarayan and Rhumasyl oils."
         },
         {
           "title": "Better with warmth",
@@ -155,7 +155,7 @@
         },
         {
           "title": "Supports gut health",
-          "text": "Kadu, Kariatu, Neem and Amla, taken as an overnight-soaked tea."
+          "text": "Kadu, Kariatu, Neem, and Amla, taken as an overnight-soaked tea."
         },
         {
           "title": "A gentle morning ritual",
