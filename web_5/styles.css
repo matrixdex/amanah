@@ -829,3 +829,7 @@ body, body * { font-size: var(--fs-body) !important; }
 
 /* "In short" summaries: no side bar */
 .doc__lead { border-left: 0; padding-left: 0; }
+
+/* product page: health benefits without divider lines */
+.pdp--page .benefits li, .pdp--page .benefits li:last-child { border: 0; }
+.pdp--page .benefits li { padding: 10px 0; }
