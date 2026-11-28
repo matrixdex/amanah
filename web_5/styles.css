@@ -826,3 +826,6 @@ body, body * { font-size: var(--fs-body) !important; }
 .be-news h2, .be-about__main h2 { line-height: 1.15; }
 /* cart line: two-line product names stay compact */
 .line h3 { line-height: 1.3; }
+
+/* "In short" summaries: no side bar */
+.doc__lead { border-left: 0; padding-left: 0; }
