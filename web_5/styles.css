@@ -937,3 +937,10 @@ body:has(#shopTitle), .be-head--center { }
 .faq__list p, .details p, .doc .faq__list p { max-width: none; }
 .faq__list summary { gap: 24px; }
 .details details p { margin-top: 0; }
+
+/* homepage statement: left-aligned on mobile too */
+@media (max-width: 760px) {
+  .be-about__main { justify-content: flex-start; text-align: left; }
+  .be-about__main h2 { text-align: left !important; margin: 0; max-width: none; }
+}
+@media (max-width: 760px) { .be-about__main h2 { text-wrap: wrap; } }
