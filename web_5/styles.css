@@ -812,3 +812,5 @@ body, body * { font-size: var(--fs-body) !important; }
 /* Health Benefits note: equal space to the last box above and the footer below */
 .bp-note { margin-top: 80px; }
 @media (max-width: 760px) { .bp-note { margin-top: 56px; } }
+/* footer description: room for the longer sentence */
+.foot-tag { max-width: 34ch; }
